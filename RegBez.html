@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bayerns Regierungsbezirke</title>
+<style>
+  :root {
+    --blau: #0a5ea8;
+    --blau-hell: #e8f1fa;
+    --text: #1f2933;
+    --grau: #5f6b76;
+    --rand: #d9e2ec;
+    --hintergrund: #f7f9fb;
+    --karte: #ffffff;
+    --richtig: #1e8e3e;
+    --richtig-hell: #e6f4ea;
+    --falsch: #c5221f;
+    --falsch-hell: #fce8e6;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    color: var(--text);
+    background: var(--hintergrund);
+    line-height: 1.6;
+  }
+  header {
+    background: var(--blau);
+    background-image: repeating-linear-gradient(45deg, rgba(255,255,255,.08) 0 18px, transparent 18px 36px);
+    color: #fff;
+    padding: 48px 16px 40px;
+    text-align: center;
+  }
+  header h1 { margin: 0 0 8px; font-size: clamp(1.8rem, 5vw, 2.6rem); }
+  header p { margin: 0 auto; max-width: 620px; opacity: .95; }
+  nav {
+    position: sticky; top: 0; z-index: 10;
+    background: #fff; border-bottom: 1px solid var(--rand);
+    display: flex; justify-content: center; gap: 8px; padding: 10px 16px;
+  }
+  nav a {
+    color: var(--blau); text-decoration: none; font-weight: 600;
+    padding: 6px 14px; border-radius: 999px;
+  }
+  nav a:hover { background: var(--blau-hell); }
+  main { max-width: 960px; margin: 0 auto; padding: 0 16px 48px; }
+  section { padding-top: 40px; }
+  h2 { font-size: 1.6rem; margin: 0 0 12px; }
+  h3 { margin: 0 0 4px; font-size: 1.25rem; }
+  .box {
+    background: var(--karte); border: 1px solid var(--rand);
+    border-radius: 12px; padding: 20px;
+  }
+  .merke {
+    background: var(--blau-hell); border-left: 4px solid var(--blau);
+    border-radius: 8px; padding: 14px 18px; margin-top: 16px;
+  }
+
+  /* Lageskizze */
+  .skizze-wrap { display: grid; gap: 20px; grid-template-columns: 1fr; margin-top: 20px; }
+  @media (min-width: 720px) { .skizze-wrap { grid-template-columns: 340px 1fr; align-items: start; } }
+  .skizze {
+    display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(4, 64px);
+    gap: 4px; max-width: 340px; margin: 0 auto; width: 100%;
+  }
+  .skizze a {
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    color: #fff; text-decoration: none; font-weight: 600; font-size: .85rem;
+    border-radius: 6px; padding: 4px; transition: transform .15s, filter .15s;
+  }
+  .skizze a:hover { transform: scale(1.03); filter: brightness(1.1); }
+  .uf { background: #7b5ea7; grid-area: 1 / 1 / 2 / 2; }
+  .of { background: #c0392b; grid-area: 1 / 2 / 2 / 4; }
+  .mf { background: #d35400; grid-area: 2 / 1 / 3 / 2; }
+  .opf { background: #16a085; grid-area: 2 / 2 / 3 / 4; }
+  .sw { background: #2c7a3f; grid-area: 3 / 1 / 5 / 2; }
+  .obb { background: #0a5ea8; grid-area: 3 / 2 / 5 / 3; }
+  .nb { background: #2980b9; grid-area: 3 / 3 / 4 / 4; }
+  .obb2 { background: #0a5ea8; grid-area: 4 / 3 / 5 / 4; }
+  .skizze-hinweis { font-size: .8rem; color: var(--grau); text-align: center; margin-top: 6px; }
+
+  /* Karten der Bezirke */
+  .bezirke { display: grid; gap: 16px; grid-template-columns: 1fr; margin-top: 20px; }
+  @media (min-width: 720px) { .bezirke { grid-template-columns: 1fr 1fr; } }
+  .bezirk {
+    background: var(--karte); border: 1px solid var(--rand); border-radius: 12px;
+    padding: 18px 20px; border-top: 6px solid var(--farbe, var(--blau));
+    scroll-margin-top: 70px;
+  }
+  .bezirk .sitz { color: var(--grau); margin: 0 0 12px; }
+  .fakten { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 12px; padding: 0; list-style: none; }
+  .fakten li { background: var(--hintergrund); border: 1px solid var(--rand); border-radius: 999px; padding: 2px 12px; font-size: .9rem; }
+  .bezirk ul.punkte { margin: 0; padding-left: 20px; }
+
+  /* Quiz */
+  .quiz { max-width: 640px; margin: 20px auto 0; }
+  .fortschritt { height: 8px; background: var(--rand); border-radius: 999px; overflow: hidden; margin-bottom: 16px; }
+  .fortschritt div { height: 100%; background: var(--blau); width: 0; transition: width .3s; }
+  .frage-nr { color: var(--grau); font-size: .9rem; margin: 0 0 4px; }
+  .frage { font-size: 1.2rem; font-weight: 600; margin: 0 0 16px; }
+  .antworten { display: grid; gap: 10px; }
+  .antworten button {
+    font: inherit; text-align: left; padding: 12px 16px; border-radius: 10px;
+    border: 2px solid var(--rand); background: #fff; cursor: pointer; color: var(--text);
+  }
+  .antworten button:hover:not(:disabled) { border-color: var(--blau); background: var(--blau-hell); }
+  .antworten button:disabled { cursor: default; }
+  .antworten button.richtig { border-color: var(--richtig); background: var(--richtig-hell); }
+  .antworten button.falsch { border-color: var(--falsch); background: var(--falsch-hell); }
+  .rueckmeldung { margin-top: 14px; padding: 12px 16px; border-radius: 10px; display: none; }
+  .rueckmeldung.richtig { display: block; background: var(--richtig-hell); }
+  .rueckmeldung.falsch { display: block; background: var(--falsch-hell); }
+  .knopf {
+    font: inherit; font-weight: 600; margin-top: 16px; padding: 10px 22px;
+    border: none; border-radius: 10px; background: var(--blau); color: #fff; cursor: pointer;
+  }
+  .knopf:hover { filter: brightness(1.1); }
+  .ergebnis { text-align: center; }
+  .ergebnis .punkte-gross { font-size: 3rem; font-weight: 700; color: var(--blau); margin: 8px 0; }
+
+  footer { text-align: center; color: var(--grau); font-size: .85rem; padding: 24px 16px 40px; border-top: 1px solid var(--rand); }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Bayerns Regierungsbezirke</h1>
+  <p>Lerne die sieben Regierungsbezirke des Freistaats Bayern kennen – und teste danach dein Wissen im Quiz.</p>
+</header>
+
+<nav>
+  <a href="#grundlagen">Grundlagen</a>
+  <a href="#bezirke">Die 7 Bezirke</a>
+  <a href="#quiz">Quiz</a>
+</nav>
+
+<main>
+
+  <!-- 1. Grundlagen -->
+  <section id="grundlagen">
+    <h2>Was ist ein Regierungsbezirk?</h2>
+    <div class="box">
+      <p>Bayern ist mit gut 70.500 km² das größte deutsche Bundesland und hat rund <strong>13,2 Millionen Einwohner</strong>. Damit man ein so großes Land gut verwalten kann, ist es in <strong>sieben Regierungsbezirke</strong> aufgeteilt.</p>
+      <p>Jeder Regierungsbezirk hat eine <strong>Regierung</strong> mit einem festen <strong>Regierungssitz</strong>. Die Regierung ist eine Behörde des Freistaats. Sie steht zwischen den Ministerien in München und den Landratsämtern bzw. Städten vor Ort und kümmert sich zum Beispiel um Schulen, Straßenbau oder Naturschutz in ihrem Gebiet.</p>
+      <p>Jeder Regierungsbezirk ist außerdem in <strong>Landkreise</strong> und <strong>kreisfreie Städte</strong> unterteilt. In ganz Bayern gibt es 71 Landkreise und 25 kreisfreie Städte.</p>
+      <div class="merke">
+        <strong>Merkhilfe:</strong> Im Norden liegen die drei <strong>Franken</strong> (Unter-, Ober- und Mittelfranken). Im Osten liegen die <strong>Oberpfalz</strong> und <strong>Niederbayern</strong>, im Süden <strong>Oberbayern</strong> und im Westen <strong>Schwaben</strong>.
+      </div>
+    </div>
+
+    <div class="skizze-wrap">
+      <div>
+        <div class="skizze" aria-label="Vereinfachte Lageskizze der Regierungsbezirke">
+          <a class="uf" href="#unterfranken">Unter&shy;franken</a>
+          <a class="of" href="#oberfranken">Oberfranken</a>
+          <a class="mf" href="#mittelfranken">Mittel&shy;franken</a>
+          <a class="opf" href="#oberpfalz">Oberpfalz</a>
+          <a class="sw" href="#schwaben">Schwaben</a>
+          <a class="obb" href="#oberbayern">Ober&shy;bayern</a>
+          <a class="nb" href="#niederbayern">Nieder&shy;bayern</a>
+          <a class="obb2" href="#oberbayern" aria-label="Oberbayern (Südosten)"></a>
+        </div>
+        <p class="skizze-hinweis">Vereinfachte Lageskizze, nicht maßstabsgetreu. Klick auf einen Bezirk!</p>
+      </div>
+      <div class="box">
+        <h3>Die sieben Regierungsbezirke im Überblick</h3>
+        <ul>
+          <li><strong>Oberbayern</strong> – Sitz: München</li>
+          <li><strong>Niederbayern</strong> – Sitz: Landshut</li>
+          <li><strong>Oberpfalz</strong> – Sitz: Regensburg</li>
+          <li><strong>Oberfranken</strong> – Sitz: Bayreuth</li>
+          <li><strong>Mittelfranken</strong> – Sitz: Ansbach</li>
+          <li><strong>Unterfranken</strong> – Sitz: Würzburg</li>
+          <li><strong>Schwaben</strong> – Sitz: Augsburg</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Die Bezirke -->
+  <section id="bezirke">
+    <h2>Die 7 Regierungsbezirke</h2>
+    <div class="bezirke">
+
+      <article class="bezirk" id="oberbayern" style="--farbe:#0a5ea8">
+        <h3>Oberbayern</h3>
+        <p class="sitz">Regierungssitz: München</p>
+        <ul class="fakten">
+          <li>ca. 17.500 km²</li>
+          <li>ca. 4,77 Mio. Einwohner</li>
+        </ul>
+        <ul class="punkte">
+          <li>Der <strong>größte</strong> Regierungsbezirk – nach Fläche und nach Einwohnern.</li>
+          <li>Hier liegt die Landeshauptstadt <strong>München</strong>.</li>
+          <li>In den Alpen steht die <strong>Zugspitze</strong> (2.962 m), der höchste Berg Deutschlands.</li>
+          <li>Der <strong>Chiemsee</strong> ist der größte See Bayerns.</li>
+        </ul>
+      </article>
+
+      <article class="bezirk" id="niederbayern" style="--farbe:#2980b9">
+        <h3>Niederbayern</h3>
+        <p class="sitz">Regierungssitz: Landshut</p>
+        <ul class="fakten">
+          <li>ca. 10.300 km²</li>
+          <li>ca. 1,26 Mio. Einwohner</li>
+        </ul>
+        <ul class="punkte">
+          <li>Im <strong>Bayerischen Wald</strong> liegt der erste Nationalpark Deutschlands (gegründet 1970).</li>
+          <li><strong>Passau</strong> ist die „Dreiflüssestadt“: Hier fließen Donau, Inn und Ilz zusammen.</li>
+          <li>Viel Landwirtschaft, z. B. im fruchtbaren Gäuboden um Straubing.</li>
+        </ul>
+      </article>
+
+      <article class="bezirk" id="oberpfalz" style="--farbe:#16a085">
+        <h3>Oberpfalz</h3>
+        <p class="sitz">Regierungssitz: Regensburg</p>
+        <ul class="fakten">
+          <li>ca. 9.700 km²</li>
+          <li>ca. 1,12 Mio. Einwohner</li>
+        </ul>
+        <ul class="punkte">
+          <li>Die Altstadt von <strong>Regensburg</strong> mit der Steinernen Brücke gehört zum UNESCO-Welterbe.</li>
+          <li>Die Oberpfalz grenzt im Osten an <strong>Tschechien</strong>.</li>
+          <li>Wegen ihrer vielen Fischweiher wird sie auch „Land der tausend Teiche“ genannt.</li>
+        </ul>
+      </article>
+
+      <article class="bezirk" id="oberfranken" style="--farbe:#c0392b">
+        <h3>Oberfranken</h3>
+        <p class="sitz">Regierungssitz: Bayreuth</p>
+        <ul class="fakten">
+          <li>ca. 7.200 km²</li>
+          <li>ca. 1,05 Mio. Einwohner</li>
+        </ul>
+        <ul class="punkte">
+          <li>Der Regierungsbezirk mit den <strong>wenigsten Einwohnern</strong>.</li>
+          <li>In <strong>Bayreuth</strong> finden jeden Sommer die Richard-Wagner-Festspiele statt.</li>
+          <li>Die Altstadt von <strong>Bamberg</strong> ist UNESCO-Welterbe.</li>
+          <li>Oberfranken hat besonders viele kleine <strong>Brauereien</strong>.</li>
+        </ul>
+      </article>
+
+      <article class="bezirk" id="mittelfranken" style="--farbe:#d35400">
+        <h3>Mittelfranken</h3>
+        <p class="sitz">Regierungssitz: Ansbach</p>
+        <ul class="fakten">
+          <li>ca. 7.200 km²</li>
+          <li>ca. 1,80 Mio. Einwohner</li>
+        </ul>
+        <ul class="punkte">
+          <li>Achtung: Der Regierungssitz ist <strong>Ansbach</strong> – nicht Nürnberg!</li>
+          <li><strong>Nürnberg</strong> ist aber die größte Stadt und die zweitgrößte Stadt Bayerns (Kaiserburg, Christkindlesmarkt).</li>
+          <li>Das <strong>Fränkische Seenland</strong> ist ein beliebtes Ausflugsziel.</li>
+        </ul>
+      </article>
+
+      <article class="bezirk" id="unterfranken" style="--farbe:#7b5ea7">
+        <h3>Unterfranken</h3>
+        <p class="sitz">Regierungssitz: Würzburg</p>
+        <ul class="fakten">
+          <li>ca. 8.500 km²</li>
+          <li>ca. 1,31 Mio. Einwohner</li>
+        </ul>
+        <ul class="punkte">
+          <li>Der nordwestlichste Regierungsbezirk Bayerns, durchflossen vom <strong>Main</strong>.</li>
+          <li>Bekannt für den <strong>Frankenwein</strong>, der in der bauchigen Flasche „Bocksbeutel“ verkauft wird.</li>
+          <li>Die <strong>Würzburger Residenz</strong> ist UNESCO-Welterbe.</li>
+          <li>Mittelgebirge: Spessart und Rhön.</li>
+        </ul>
+      </article>
+
+      <article class="bezirk" id="schwaben" style="--farbe:#2c7a3f">
+        <h3>Schwaben</h3>
+        <p class="sitz">Regierungssitz: Augsburg</p>
+        <ul class="fakten">
+          <li>ca. 10.000 km²</li>
+          <li>ca. 1,94 Mio. Einwohner</li>
+        </ul>
+        <ul class="punkte">
+          <li>Liegt im Westen Bayerns an der Grenze zu Baden-Württemberg.</li>
+          <li>In <strong>Augsburg</strong> steht die Fuggerei (1521), die älteste noch bestehende Sozialsiedlung der Welt.</li>
+          <li>Im <strong>Allgäu</strong> liegt Schloss <strong>Neuschwanstein</strong>.</li>
+        </ul>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- 3. Quiz -->
+  <section id="quiz">
+    <h2>Quiz: Was weißt du jetzt?</h2>
+    <p>10 Fragen zu den Informationen oben. Wähle jeweils eine Antwort.</p>
+    <div class="quiz box" id="quiz-box"></div>
+  </section>
+
+</main>
+
+<footer>
+  Einwohnerzahlen: Bayerisches Landesamt für Statistik, Stand 31.12.2025 (gerundet). Flächenangaben gerundet.
+</footer>
+
+<script>
+  const fragen = [
+    {
+      frage: "Wie viele Regierungsbezirke hat Bayern?",
+      antworten: ["5", "7", "9", "10"],
+      richtig: 1,
+      erklaerung: "Bayern hat sieben Regierungsbezirke."
+    },
+    {
+      frage: "Welche Stadt ist der Regierungssitz von Mittelfranken?",
+      antworten: ["Nürnberg", "Erlangen", "Ansbach", "Fürth"],
+      richtig: 2,
+      erklaerung: "Der Regierungssitz ist Ansbach – auch wenn Nürnberg die größte Stadt ist."
+    },
+    {
+      frage: "Welcher Regierungsbezirk ist der größte (nach Fläche und Einwohnern)?",
+      antworten: ["Schwaben", "Niederbayern", "Mittelfranken", "Oberbayern"],
+      richtig: 3,
+      erklaerung: "Oberbayern ist mit ca. 17.500 km² und rund 4,77 Mio. Einwohnern der größte Bezirk."
+    },
+    {
+      frage: "Regensburg ist der Regierungssitz von …",
+      antworten: ["Niederbayern", "Oberpfalz", "Oberfranken", "Oberbayern"],
+      richtig: 1,
+      erklaerung: "Regensburg ist der Sitz der Regierung der Oberpfalz."
+    },
+    {
+      frage: "Welcher Regierungsbezirk ist für den Frankenwein im „Bocksbeutel“ bekannt?",
+      antworten: ["Unterfranken", "Oberfranken", "Schwaben", "Oberpfalz"],
+      richtig: 0,
+      erklaerung: "Der Frankenwein wächst vor allem am Main in Unterfranken."
+    },
+    {
+      frage: "In welchem Regierungsbezirk liegt Schloss Neuschwanstein?",
+      antworten: ["Oberbayern", "Niederbayern", "Schwaben", "Mittelfranken"],
+      richtig: 2,
+      erklaerung: "Neuschwanstein liegt im Allgäu – und das gehört zu Schwaben."
+    },
+    {
+      frage: "Welche Stadt ist der Regierungssitz von Oberfranken?",
+      antworten: ["Bamberg", "Bayreuth", "Coburg", "Hof"],
+      richtig: 1,
+      erklaerung: "Regierungssitz ist Bayreuth, die Stadt der Richard-Wagner-Festspiele."
+    },
+    {
+      frage: "In welchem Regierungsbezirk liegt der erste Nationalpark Deutschlands?",
+      antworten: ["Oberbayern", "Oberpfalz", "Unterfranken", "Niederbayern"],
+      richtig: 3,
+      erklaerung: "Der Nationalpark Bayerischer Wald (1970) liegt in Niederbayern."
+    },
+    {
+      frage: "Welche Stadt ist der Regierungssitz von Niederbayern?",
+      antworten: ["Passau", "Straubing", "Landshut", "Deggendorf"],
+      richtig: 2,
+      erklaerung: "Der Regierungssitz von Niederbayern ist Landshut."
+    },
+    {
+      frage: "Wie viele Regierungsbezirke tragen „Franken“ im Namen?",
+      antworten: ["2", "3", "4", "1"],
+      richtig: 1,
+      erklaerung: "Drei: Unterfranken, Oberfranken und Mittelfranken."
+    }
+  ];
+
+  const box = document.getElementById("quiz-box");
+  let reihenfolge = [];
+  let index = 0;
+  let punkte = 0;
+
+  function mischen(liste) {
+    const kopie = liste.slice();
+    for (let i = kopie.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [kopie[i], kopie[j]] = [kopie[j], kopie[i]];
+    }
+    return kopie;
+  }
+
+  function starten() {
+    reihenfolge = mischen(fragen);
+    index = 0;
+    punkte = 0;
+    zeigeFrage();
+  }
+
+  function zeigeFrage() {
+    const f = reihenfolge[index];
+    const prozent = (index / reihenfolge.length) * 100;
+    box.innerHTML = `
+      <div class="fortschritt"><div style="width:${prozent}%"></div></div>
+      <p class="frage-nr">Frage ${index + 1} von ${reihenfolge.length}</p>
+      <p class="frage">${f.frage}</p>
+      <div class="antworten">
+        ${f.antworten.map((a, i) => `<button data-i="${i}">${a}</button>`).join("")}
+      </div>
+      <div class="rueckmeldung" id="rueckmeldung"></div>
+    `;
+    box.querySelectorAll(".antworten button").forEach(btn => {
+      btn.addEventListener("click", () => antworten(Number(btn.dataset.i)));
+    });
+  }
+
+  function antworten(gewaehlt) {
+    const f = reihenfolge[index];
+    const knoepfe = box.querySelectorAll(".antworten button");
+    knoepfe.forEach(b => b.disabled = true);
+    knoepfe[f.richtig].classList.add("richtig");
+
+    const rm = document.getElementById("rueckmeldung");
+    if (gewaehlt === f.richtig) {
+      punkte++;
+      rm.className = "rueckmeldung richtig";
+      rm.innerHTML = "<strong>Richtig!</strong> " + f.erklaerung;
+    } else {
+      knoepfe[gewaehlt].classList.add("falsch");
+      rm.className = "rueckmeldung falsch";
+      rm.innerHTML = "<strong>Leider falsch.</strong> " + f.erklaerung;
+    }
+
+    const weiter = document.createElement("button");
+    weiter.className = "knopf";
+    weiter.textContent = index < reihenfolge.length - 1 ? "Nächste Frage" : "Ergebnis anzeigen";
+    weiter.addEventListener("click", () => {
+      index++;
+      if (index < reihenfolge.length) zeigeFrage(); else zeigeErgebnis();
+    });
+    box.appendChild(weiter);
+  }
+
+  function zeigeErgebnis() {
+    let text;
+    if (punkte === reihenfolge.length) text = "Perfekt! Du kennst Bayerns Regierungsbezirke ganz genau.";
+    else if (punkte >= 7) text = "Sehr gut! Schau dir die Fragen, die du nicht wusstest, noch einmal oben an.";
+    else if (punkte >= 4) text = "Gar nicht schlecht! Lies die Infos oben noch einmal und versuch es erneut.";
+    else text = "Das war erst der Anfang. Lies die Infos oben in Ruhe durch und starte dann das Quiz neu.";
+
+    box.innerHTML = `
+      <div class="fortschritt"><div style="width:100%"></div></div>
+      <div class="ergebnis">
+        <p>Dein Ergebnis</p>
+        <p class="punkte-gross">${punkte} / ${reihenfolge.length}</p>
+        <p>${text}</p>
+        <button class="knopf" id="neustart">Quiz neu starten</button>
+      </div>
+    `;
+    document.getElementById("neustart").addEventListener("click", starten);
+  }
+
+  starten();
+</script>
+</body>
+</html>
