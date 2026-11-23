@@ -4,24 +4,25 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Bayerns Regierungsbezirke</title>
-<meta name="description" content="Lernwebsite zu den sieben Regierungsbezirken Bayerns mit interaktiver Karte">
+<meta name="description" content="Lernwebsite zu den sieben Regierungsbezirken Bayerns mit interaktiver Karte und Entdecker-Pass">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="icon-berg" viewBox="0 0 24 24"><path d="M1.5 20.5 L9 6.5 L13.2 14 L16.3 9.5 L22.5 20.5 Z"/><path fill="var(--grund)" d="M9 6.5 L11.4 11 L9.9 10.1 L8.6 11.5 L7.1 10.2 Z"/></symbol><symbol id="icon-tanne" viewBox="0 0 24 24"><path d="M12 1.5 L17 8.5 H14.6 L19 14.5 H15.2 L19.8 20 H4.2 L8.8 14.5 H5 L9.4 8.5 H7 Z"/><rect x="10.7" y="19.5" width="2.6" height="3"/></symbol><symbol id="icon-bruecke" viewBox="0 0 24 24"><path d="M1 8.5 H23 V11 H1 Z"/><path d="M1 11 H23 V18.5 H21 A3.4 3.4 0 0 0 14.2 18.5 H9.8 A3.4 3.4 0 0 0 3 18.5 H1 Z"/><path d="M1 21.6 q2.75 -1.6 5.5 0 t5.5 0 t5.5 0 t5.5 0" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol><symbol id="icon-noten" viewBox="0 0 24 24"><path d="M9 5.2 L20.5 2.5 V16 A3.1 3.1 0 1 1 18.5 13.1 V7.1 L11 8.9 V18 A3.1 3.1 0 1 1 9 15.1 Z"/></symbol><symbol id="icon-burg" viewBox="0 0 24 24"><path d="M5 22 V4.5 H7.6 V7 H10.2 V4.5 H13.8 V7 H16.4 V4.5 H19 V22 Z"/><path fill="var(--grund)" d="M9.8 22 V17.2 A2.2 2.2 0 0 1 14.2 17.2 V22 Z"/><rect fill="var(--grund)" x="11" y="10" width="2" height="3.2" rx=".6"/></symbol><symbol id="icon-trauben" viewBox="0 0 24 24"><path d="M12 7.2 V3.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M12.2 4.4 C14.2 2 17.4 2.4 18.6 4.2 C16.6 6 13.8 6.2 12.2 4.4 Z"/><circle cx="7.4" cy="9.9" r="2.6"/><circle cx="12" cy="9.9" r="2.6"/><circle cx="16.6" cy="9.9" r="2.6"/><circle cx="9.7" cy="14.3" r="2.6"/><circle cx="14.3" cy="14.3" r="2.6"/><circle cx="12" cy="18.7" r="2.6"/></symbol><symbol id="icon-schloss" viewBox="0 0 24 24"><path d="M3.5 22 V13 H20.5 V22 Z"/><path d="M4.8 13 V9 H8.2 V13 Z M4.3 9 L6.5 4.2 L8.7 9 Z"/><path d="M10 13 V6.8 H14 V13 Z M9.5 6.8 L12 1.2 L14.5 6.8 Z"/><path d="M15.8 13 V9.8 H19.2 V13 Z M15.3 9.8 L17.5 5.4 L19.7 9.8 Z"/><path fill="var(--grund)" d="M10.6 22 V18.6 A1.4 1.4 0 0 1 13.4 18.6 V22 Z"/></symbol><symbol id="orden-form" viewBox="0 0 64 64"><polygon fill="var(--rand-farbe)" points="32,2 58,17 58,47 32,62 6,47 6,17"/><polygon fill="var(--grund)" points="32,7.5 53.2,19.7 53.2,44.3 32,56.5 10.8,44.3 10.8,19.7"/><polygon fill="#fff" fill-opacity=".2" points="32,7.5 53.2,19.7 53.2,26 32,14 10.8,26 10.8,19.7"/></symbol></defs></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="icon-berg" viewBox="0 0 24 24"><path d="M1.5 20.5 L9 6.5 L13.2 14 L16.3 9.5 L22.5 20.5 Z"/><path fill="var(--grund)" d="M9 6.5 L11.4 11 L9.9 10.1 L8.6 11.5 L7.1 10.2 Z"/></symbol><symbol id="icon-tanne" viewBox="0 0 24 24"><path d="M12 1.5 L17 8.5 H14.6 L19 14.5 H15.2 L19.8 20 H4.2 L8.8 14.5 H5 L9.4 8.5 H7 Z"/><rect x="10.7" y="19.5" width="2.6" height="3"/></symbol><symbol id="icon-bruecke" viewBox="0 0 24 24"><path d="M1 8.5 H23 V11 H1 Z"/><path d="M1 11 H23 V18.5 H21 A3.4 3.4 0 0 0 14.2 18.5 H9.8 A3.4 3.4 0 0 0 3 18.5 H1 Z"/><path d="M1 21.6 q2.75 -1.6 5.5 0 t5.5 0 t5.5 0 t5.5 0" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol><symbol id="icon-noten" viewBox="0 0 24 24"><path d="M9 5.2 L20.5 2.5 V16 A3.1 3.1 0 1 1 18.5 13.1 V7.1 L11 8.9 V18 A3.1 3.1 0 1 1 9 15.1 Z"/></symbol><symbol id="icon-burg" viewBox="0 0 24 24"><path d="M5 22 V4.5 H7.6 V7 H10.2 V4.5 H13.8 V7 H16.4 V4.5 H19 V22 Z"/><path fill="var(--grund)" d="M9.8 22 V17.2 A2.2 2.2 0 0 1 14.2 17.2 V22 Z"/><rect fill="var(--grund)" x="11" y="10" width="2" height="3.2" rx=".6"/></symbol><symbol id="icon-trauben" viewBox="0 0 24 24"><path d="M12 7.2 V3.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M12.2 4.4 C14.2 2 17.4 2.4 18.6 4.2 C16.6 6 13.8 6.2 12.2 4.4 Z"/><circle cx="7.4" cy="9.9" r="2.6"/><circle cx="12" cy="9.9" r="2.6"/><circle cx="16.6" cy="9.9" r="2.6"/><circle cx="9.7" cy="14.3" r="2.6"/><circle cx="14.3" cy="14.3" r="2.6"/><circle cx="12" cy="18.7" r="2.6"/></symbol><symbol id="icon-schloss" viewBox="0 0 24 24"><path d="M3.5 22 V13 H20.5 V22 Z"/><path d="M4.8 13 V9 H8.2 V13 Z M4.3 9 L6.5 4.2 L8.7 9 Z"/><path d="M10 13 V6.8 H14 V13 Z M9.5 6.8 L12 1.2 L14.5 6.8 Z"/><path d="M15.8 13 V9.8 H19.2 V13 Z M15.3 9.8 L17.5 5.4 L19.7 9.8 Z"/><path fill="var(--grund)" d="M10.6 22 V18.6 A1.4 1.4 0 0 1 13.4 18.6 V22 Z"/></symbol><symbol id="stempel-form" viewBox="0 0 64 64"><circle cx="32" cy="32" r="29" fill="var(--stempel-grund)" stroke="var(--tinte)" stroke-width="3"/><circle cx="32" cy="32" r="24.5" fill="none" stroke="var(--tinte)" stroke-width="1.4" stroke-dasharray="2.2 2.4"/></symbol><filter id="tinte" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="2" seed="4" result="rauschen"/><feColorMatrix in="rauschen" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.1 1.5" result="maske"/><feComposite in="SourceGraphic" in2="maske" operator="in"/></filter></defs></svg>
 
 <header>
   <span class="vorzeile">Lernwebsite Erdkunde</span>
   <h1>Bayerns Regierungsbezirke</h1>
-  <p>Entdecke die sieben Regierungsbezirke des Freistaats Bayern auf der interaktiven Karte, sammle alle sieben Orden und schalte damit das Quiz frei.</p>
+  <p>Finde heraus, wie Bayern aufgebaut ist, erkunde die sieben Regierungsbezirke auf der Karte und sammle alle Stempel in deinem Entdecker-Pass. Dann wartet das Quiz auf dich!</p>
 </header>
 
 <nav>
-  <a href="#grundlagen">Grundlagen</a>
-  <a href="#karte">Interaktive Karte</a>
+  <a href="#grundlagen">Aufbau</a>
+  <a href="#himmelsrichtungen">Himmelsrichtungen</a>
+  <a href="#karte">Karte</a>
   <a href="#ueberblick">Überblick</a>
   <a class="nav-knopf" id="nav-quiz" href="quiz.html">Zum Quiz</a>
 </nav>
@@ -35,44 +36,114 @@
     <div class="zahl"><strong>71 + 25</strong><span>Landkreise + kreisfreie Städte</span></div>
   </div>
 
-  <!-- 1. Grundlagen -->
+  <!-- 1. Aufbau Bayerns -->
   <section id="grundlagen">
-    <h2>Was ist ein Regierungsbezirk?</h2>
-    <div class="zweispaltig">
-      <div class="box">
-        <p style="margin-top:0">Bayern ist das größte deutsche Bundesland. Damit man ein so großes Land gut verwalten kann, ist es in <strong>sieben Regierungsbezirke</strong> aufgeteilt.</p>
-        <p>Jeder Regierungsbezirk hat eine <strong>Regierung</strong> mit einem festen <strong>Regierungssitz</strong>. Die Regierung ist eine Behörde des Freistaats. Sie steht zwischen den Ministerien in München und den Landratsämtern bzw. Städten vor Ort und kümmert sich zum Beispiel um Schulen, Straßenbau oder Naturschutz in ihrem Gebiet.</p>
-        <p style="margin-bottom:0">Jeder Regierungsbezirk ist außerdem in <strong>Landkreise</strong> und <strong>kreisfreie Städte</strong> unterteilt. In ganz Bayern gibt es 71 Landkreise und 25 kreisfreie Städte.</p>
+    <h2>Wie ist Bayern aufgebaut?</h2>
+    <p class="einleitung">Bayern ist das größte deutsche Bundesland. Damit man es gut verwalten kann, ist es in mehrere Ebenen aufgeteilt – wie Kisten, die ineinanderstecken. Klicke dich durch die Stufen!</p>
+    <div class="box ebenen">
+      <div class="treppe" role="tablist" aria-label="Verwaltungsebenen in Bayern">
+        <button class="stufe" role="tab" data-i="0" style="--breite:34%"><span class="stufe-zahl">1</span><span class="stufe-name">Freistaat Bayern</span></button>
+        <button class="stufe" role="tab" data-i="1" style="--breite:54%"><span class="stufe-zahl">7</span><span class="stufe-name">Regierungsbezirke</span></button>
+        <button class="stufe" role="tab" data-i="2" style="--breite:76%"><span class="stufe-zahl">71 + 25</span><span class="stufe-name">Landkreise &amp; kreisfreie Städte</span></button>
+        <button class="stufe" role="tab" data-i="3" style="--breite:100%"><span class="stufe-zahl">2.000+</span><span class="stufe-name">Gemeinden</span></button>
       </div>
-      <div class="merke">
-        <h3>Merkhilfe</h3>
-        <ul>
-          <li>Im <strong>Norden</strong> liegen die drei <strong>Franken</strong>: Unter-, Ober- und Mittelfranken.</li>
-          <li>Im <strong>Osten</strong> liegen die <strong>Oberpfalz</strong> und <strong>Niederbayern</strong>.</li>
-          <li>Im <strong>Süden</strong> liegt <strong>Oberbayern</strong>, im <strong>Westen</strong> <strong>Schwaben</strong>.</li>
-          <li>Die <strong>Donau</strong> fließt quer durch Bayern – von Schwaben bis Passau.</li>
-        </ul>
+      <div class="stufen-info" role="tabpanel" aria-live="polite">
+        <p class="stufen-schritt" id="stufen-schritt"></p>
+        <h3 id="stufen-titel"></h3>
+        <p id="stufen-text"></p>
+        <div class="beispiel-kette" id="beispiel-kette" aria-label="Beispiel"></div>
+        <div class="stufen-knoepfe">
+          <button class="knopf-klein" id="stufe-zurueck">&larr; Eine Stufe höher</button>
+          <button class="knopf-klein" id="stufe-weiter">Eine Stufe tiefer &rarr;</button>
+        </div>
       </div>
+    </div>
+
+    <h3 class="unterueberschrift">Was macht eine Regierung?</h3>
+    <p class="einleitung">Jeder Regierungsbezirk hat eine <strong>Regierung</strong>. Das ist kein Parlament, sondern eine Behörde – also ein Amt – des Freistaats. Klicke auf die Karten, um sie umzudrehen.</p>
+    <div class="dreh-karten">
+      <button class="dreh-karte" style="--farbe:#1f6fb8" aria-pressed="false">
+        <span class="seite vorne"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8h13l-3.5-3.5L14 3l6 6-6 6-1.5-1.5L16 10H3z"/><path d="M21 16H8l3.5 3.5L10 21l-6-6 6-6 1.5 1.5L8 14h13z" opacity=".55"/></svg><strong>Bindeglied</strong><small>Umdrehen</small></span>
+        <span class="seite hinten">Sie verbindet die Ministerien in München mit den Landratsämtern und Städten vor Ort.</span>
+      </button>
+      <button class="dreh-karte" style="--farbe:#d9604a" aria-pressed="false">
+        <span class="seite vorne"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 1 9l11 6 9-4.9V17h2V9z"/><path d="M5 13.2v3.6C5 18.6 8.1 20 12 20s7-1.4 7-3.2v-3.6l-7 3.8z"/></svg><strong>Schulen</strong><small>Umdrehen</small></span>
+        <span class="seite hinten">Sie kümmert sich mit darum, dass der Unterricht an den Schulen im Bezirk gut läuft.</span>
+      </button>
+      <button class="dreh-karte" style="--farbe:#e8963f" aria-pressed="false">
+        <span class="seite vorne"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 2h2l-1.6 20H4.6zM13 2h2l4.4 20h-4.8z"/><path d="M11.2 4h1.6v3h-1.6zM11.2 10h1.6v4h-1.6zM11.2 17h1.6v5h-1.6z"/></svg><strong>Straßen &amp; Bauen</strong><small>Umdrehen</small></span>
+        <span class="seite hinten">Sie prüft und genehmigt große Bauvorhaben, zum Beispiel neue Straßen.</span>
+      </button>
+      <button class="dreh-karte" style="--farbe:#4f9a57" aria-pressed="false">
+        <span class="seite vorne"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 3c-9 0-15 4-15 11 0 2 .6 3.6 1.5 4.8L4 21.3 5.4 22.7 8 20.1C9.3 21 10.9 21.5 13 21.5c6 0 8-7 7-18.5zM9.5 17.5c1.5-4 4-7 8-9-3 2.5-5.3 5.4-6.6 9.5z"/></svg><strong>Natur &amp; Umwelt</strong><small>Umdrehen</small></span>
+        <span class="seite hinten">Sie kümmert sich um den Naturschutz, zum Beispiel um Naturschutzgebiete.</span>
+      </button>
     </div>
   </section>
 
-  <!-- 2. Interaktive Karte -->
+  <!-- 2. Himmelsrichtungen -->
+  <section id="himmelsrichtungen">
+    <h2>Der Himmelsrichtungs-Trick</h2>
+    <p class="einleitung">Mit diesem Trick kannst du dir merken, wo die Bezirke liegen. Tippe auf eine Himmelsrichtung!</p>
+    <div class="box kompass-bereich">
+      <div class="kompass" role="group" aria-label="Himmelsrichtungen">
+        <svg class="kompass-rose" viewBox="0 0 100 100" aria-hidden="true">
+          <circle cx="50" cy="50" r="46" fill="#fff" stroke="#dce3ec" stroke-width="2"/>
+          <circle cx="50" cy="50" r="36" fill="none" stroke="#e7f0fa" stroke-width="6"/>
+          <g id="kompass-nadel">
+            <polygon points="50,14 57,50 50,46 43,50" fill="#d9604a"/>
+            <polygon points="50,86 57,50 50,54 43,50" fill="#12355b"/>
+          </g>
+          <circle cx="50" cy="50" r="4" fill="#fff" stroke="#12355b" stroke-width="2"/>
+        </svg>
+        <button class="richtung n" data-richtung="norden" aria-pressed="false">N</button>
+        <button class="richtung o" data-richtung="osten" aria-pressed="false">O</button>
+        <button class="richtung s" data-richtung="sueden" aria-pressed="false">S</button>
+        <button class="richtung w" data-richtung="westen" aria-pressed="false">W</button>
+      </div>
+      <div class="kompass-text">
+        <h3 id="richtung-titel">Wo liegt was?</h3>
+        <p id="richtung-text">Tippe auf <strong>N</strong>, <strong>O</strong>, <strong>S</strong> oder <strong>W</strong>. Auf der kleinen Karte leuchten dann die passenden Bezirke auf.</p>
+        <button class="donau-knopf" id="donau-knopf" aria-pressed="false"><i></i>Wo fließt die Donau?</button>
+      </div>
+      <div class="minikarte-huelle"><svg class="minikarte" id="minikarte" viewBox="0 0 465 479" aria-hidden="true">
+<path data-id="oberbayern" style="--farbe:#3a74c9" d="M182.2,434.0 L186.8,442.4 L191.4,449.4 L202.5,450.8 L213.5,448.0 L220.9,449.4 L228.2,439.6 L237.4,434.0 L248.5,429.8 L257.7,425.6 L268.7,422.8 L283.5,420.0 L294.5,422.8 L302.8,421.4 L307.4,411.6 L314.8,408.8 L326.7,413.0 L338.7,411.6 L351.6,414.4 L358.0,422.8 L364.4,431.2 L372.7,436.8 L380.1,429.8 L384.7,420.0 L382.9,408.8 L377.3,400.4 L373.7,387.8 L370.9,375.2 L362.6,364.0 L356.2,357.0 L358.9,350.0 L362.6,343.0 L371.8,334.6 L364.4,326.2 L349.7,320.6 L329.5,309.4 L312.9,310.8 L299.1,308.0 L287.1,299.6 L270.6,291.2 L258.6,280.0 L257.7,261.8 L255.9,243.6 L250.3,226.8 L243.9,224.0 L234.7,217.0 L231.0,222.6 L224.6,226.8 L209.8,228.2 L200.6,235.2 L191.4,243.6 L196.0,257.6 L200.6,274.4 L209.8,288.4 L213.5,301.0 L210.8,313.6 L200.6,327.6 L188.7,341.6 L174.9,358.4 L174.9,378.0 L179.5,397.6 L179.5,413.0 L183.1,424.2 Z"/>
+<path data-id="niederbayern" style="--farbe:#4ba3c7" d="M371.8,334.6 L380.1,330.4 L391.1,326.2 L404.0,316.4 L416.9,302.4 L420.6,287.0 L432.6,291.2 L443.6,294.0 L449.1,282.8 L452.8,268.8 L454.6,259.0 L441.8,250.6 L430.7,240.8 L423.3,233.8 L414.1,224.0 L404.9,215.6 L397.6,210.0 L389.3,201.6 L381.0,205.8 L368.1,210.0 L349.7,225.4 L336.8,229.6 L324.0,238.0 L310.1,252.0 L299.1,257.6 L288.1,240.8 L280.7,231.0 L266.9,225.4 L250.3,226.8 L255.9,243.6 L257.7,261.8 L258.6,280.0 L270.6,291.2 L287.1,299.6 L299.1,308.0 L312.9,310.8 L329.5,309.4 L349.7,320.6 L364.4,326.2 Z"/>
+<path data-id="oberpfalz" style="--farbe:#2a9d8f" d="M389.3,201.6 L377.3,193.2 L369.1,187.6 L358.0,180.6 L346.0,170.8 L340.5,161.0 L335.9,149.8 L331.3,137.2 L329.5,121.8 L325.8,113.4 L331.3,103.6 L332.2,93.8 L328.6,86.8 L322.1,82.6 L315.7,79.8 L305.5,82.6 L295.4,88.2 L287.1,91.0 L277.9,98.0 L266.9,106.4 L257.7,114.8 L250.3,128.8 L241.1,138.6 L246.6,149.8 L241.1,161.0 L232.8,170.8 L223.6,182.0 L219.0,196.0 L228.2,210.0 L234.7,217.0 L243.9,224.0 L250.3,226.8 L266.9,225.4 L280.7,231.0 L288.1,240.8 L299.1,257.6 L310.1,252.0 L324.0,238.0 L336.8,229.6 L349.7,225.4 L368.1,210.0 L381.0,205.8 Z"/>
+<path data-id="oberfranken" style="--farbe:#d9604a" d="M315.7,79.8 L307.4,74.2 L303.7,67.2 L304.6,61.6 L296.3,56.0 L294.5,49.0 L294.5,42.0 L286.2,35.0 L274.3,28.0 L265.1,30.8 L255.9,28.0 L243.9,22.4 L231.9,12.6 L222.7,16.8 L218.1,23.8 L209.8,29.4 L202.5,36.4 L193.3,35.0 L185.9,37.8 L179.5,43.4 L174.9,49.0 L169.3,53.2 L173.9,65.8 L180.4,77.0 L179.5,86.8 L170.3,95.2 L158.3,103.6 L140.8,106.4 L144.5,114.8 L151.9,120.4 L167.5,123.2 L182.2,124.6 L196.9,130.2 L207.1,138.6 L219.0,140.0 L230.1,140.0 L241.1,138.6 L250.3,128.8 L257.7,114.8 L266.9,106.4 L277.9,98.0 L287.1,91.0 L295.4,88.2 L305.5,82.6 Z"/>
+<path data-id="mittelfranken" style="--farbe:#e8963f" d="M106.8,156.8 L109.5,166.6 L111.4,177.8 L113.2,190.4 L115.0,201.6 L118.7,211.4 L125.2,219.8 L131.6,226.8 L145.4,231.0 L158.3,228.2 L171.2,233.8 L182.2,240.8 L191.4,243.6 L200.6,235.2 L209.8,228.2 L224.6,226.8 L231.0,222.6 L234.7,217.0 L228.2,210.0 L219.0,196.0 L223.6,182.0 L232.8,170.8 L241.1,161.0 L246.6,149.8 L241.1,138.6 L230.1,140.0 L219.0,140.0 L207.1,138.6 L196.9,130.2 L182.2,124.6 L167.5,123.2 L151.9,120.4 L141.7,126.0 L131.6,131.6 L121.5,140.0 L112.3,147.0 Z"/>
+<path data-id="unterfranken" style="--farbe:#8462b8" d="M169.3,53.2 L160.1,47.6 L150.0,40.6 L138.0,33.6 L127.0,25.2 L116.0,16.8 L105.8,9.8 L96.6,18.2 L93.0,28.0 L86.5,35.0 L75.5,40.6 L66.3,49.0 L55.2,56.0 L58.0,60.2 L53.4,70.0 L46.0,75.6 L36.8,68.6 L27.6,65.8 L17.5,70.0 L8.3,77.0 L6.4,84.0 L12.0,91.0 L11.0,100.8 L16.6,109.2 L14.7,117.6 L16.6,126.0 L18.4,137.2 L20.2,144.2 L31.3,145.6 L36.8,138.6 L38.7,128.8 L43.3,121.8 L55.2,120.4 L62.6,123.2 L71.8,130.2 L82.8,137.2 L90.2,145.6 L94.8,154.0 L101.2,159.6 L106.8,156.8 L112.3,147.0 L121.5,140.0 L131.6,131.6 L141.7,126.0 L151.9,120.4 L144.5,114.8 L140.8,106.4 L158.3,103.6 L170.3,95.2 L179.5,86.8 L180.4,77.0 L173.9,65.8 Z"/>
+<path data-id="schwaben" style="--farbe:#4f9a57" d="M131.6,226.8 L134.4,238.0 L138.0,246.4 L136.2,257.6 L133.4,266.0 L129.8,275.8 L126.1,284.2 L118.7,294.0 L110.4,302.4 L101.2,310.8 L105.8,324.8 L109.5,338.8 L112.3,352.8 L113.2,366.8 L110.4,378.0 L109.5,389.2 L108.6,400.4 L109.5,408.8 L99.4,417.2 L84.7,414.4 L73.6,420.0 L66.3,425.6 L69.9,429.8 L76.4,432.6 L84.7,428.4 L93.9,431.2 L101.2,436.8 L107.7,445.2 L110.4,453.6 L117.8,469.0 L128.8,463.4 L139.9,453.6 L143.6,442.4 L148.2,432.6 L156.5,427.0 L165.7,428.4 L173.9,435.4 L182.2,434.0 L183.1,424.2 L179.5,413.0 L179.5,397.6 L174.9,378.0 L174.9,358.4 L188.7,341.6 L200.6,327.6 L210.8,313.6 L213.5,301.0 L209.8,288.4 L200.6,274.4 L196.0,257.6 L191.4,243.6 L182.2,240.8 L171.2,233.8 L158.3,228.2 L145.4,231.0 Z"/>
+<polyline class="mini-donau" points="101.2,310.8 127.0,303.8 146.3,285.6 173.0,266.0 209.8,264.6 232.8,260.4 274.3,238.0 294.5,224.0 337.8,243.6 373.7,250.6 394.8,278.6 420.6,287.0"/>
+<text data-id="oberbayern" x="275" y="395">Oberbayern</text>
+<text data-id="niederbayern" x="372" y="255">Niederbayern</text>
+<text data-id="oberpfalz" x="300" y="160">Oberpfalz</text>
+<text data-id="oberfranken" x="232" y="62">Oberfranken</text>
+<text data-id="mittelfranken" x="168" y="210">Mittelfranken</text>
+<text data-id="unterfranken" x="100" y="80">Unterfranken</text>
+<text data-id="schwaben" x="128" y="380">Schwaben</text>
+</svg></div>
+    </div>
+  </section>
+
+  <!-- 3. Interaktive Karte -->
   <section id="karte">
     <h2>Entdecke die Karte</h2>
-    <p class="einleitung">Klicke auf einen Regierungsbezirk und lies dir die Infos durch. Danach bekommst du seinen Orden. Mit allen sieben Orden wird das Quiz freigeschaltet.</p>
+    <p class="einleitung">Klicke auf einen Regierungsbezirk und lies dir die Infos durch. Danach bekommst du einen Stempel in deinen Entdecker-Pass. Mit allen sieben Stempeln wird das Quiz freigeschaltet.</p>
 
-    <div class="entdecker box" id="entdecker">
-      <div class="entdecker-kopf">
+    <div class="pass" id="pass">
+      <div class="pass-kopf">
         <div class="zaehler" aria-hidden="true">
           <span class="zaehler-zahl" id="zaehler-zahl">0</span><span class="zaehler-von">/ 7</span>
         </div>
-        <div class="entdecker-text">
-          <h3 id="entdecker-titel">Deine Orden-Sammlung</h3>
-          <p id="entdecker-meldung" aria-live="polite"></p>
+        <div class="pass-text">
+          <span class="pass-etikett">Entdecker-Pass Bayern</span>
+          <h3 id="pass-titel">Deine Stempel</h3>
+          <p id="pass-meldung" aria-live="polite"></p>
         </div>
-        <button class="zuruecksetzen" id="zuruecksetzen" type="button" hidden>Orden zurücksetzen</button>
+        <button class="zuruecksetzen" id="zuruecksetzen" type="button" hidden>Pass zurücksetzen</button>
       </div>
-      <div class="orden-leiste" id="orden-leiste" role="list" aria-label="Orden der Regierungsbezirke"></div>
+      <div class="stempel-leiste" id="stempel-leiste" role="list" aria-label="Stempel der Regierungsbezirke"></div>
     </div>
 
     <div class="kartenbereich">
@@ -112,7 +183,7 @@
         <div class="legende">
           <span><i class="l-punkt"></i>Regierungssitz</span>
           <span><i class="l-donau"></i>Donau</span>
-          <span>✓ Orden erhalten</span>
+          <span>✓ Stempel erhalten</span>
           <span>Vereinfachte Karte, Grenzen gerundet</span>
         </div>
       </div>
@@ -120,29 +191,34 @@
     </div>
   </section>
 
-  <!-- 3. Überblick -->
+  <!-- 4. Überblick -->
   <section id="ueberblick">
-    <h2>Alle Bezirke im Überblick</h2>
-    <p class="einleitung">Ein Klick auf eine Zeile zeigt den Bezirk auf der Karte.</p>
+    <h2>Alle Bezirke im Vergleich</h2>
+    <p class="einleitung">Klicke auf eine Spaltenüberschrift, um die Tabelle zu sortieren. Welcher Bezirk ist der größte, welcher hat die meisten Einwohner? Ein Klick auf eine Zeile zeigt den Bezirk auf der Karte.</p>
     <div class="box tabelle-wrap">
-      <table>
+      <table id="vergleich">
         <thead>
-          <tr><th>Regierungsbezirk</th><th>Regierungssitz</th><th class="zahl-spalte">Fläche</th><th class="zahl-spalte">Einwohner</th></tr>
+          <tr>
+            <th><button class="sortieren" data-schluessel="name">Regierungsbezirk <span class="pfeil"></span></button></th>
+            <th><button class="sortieren" data-schluessel="sitz">Regierungssitz <span class="pfeil"></span></button></th>
+            <th><button class="sortieren" data-schluessel="km2" data-zahl="1">Fläche <span class="pfeil"></span></button></th>
+            <th><button class="sortieren" data-schluessel="mio" data-zahl="1">Einwohner <span class="pfeil"></span></button></th>
+          </tr>
         </thead>
         <tbody>
-<tr data-id="oberbayern" style="--farbe:#3a74c9"><td><span class="farbpunkt"></span>Oberbayern</td><td>München</td><td class="zahl-spalte">17.500 km²</td><td class="zahl-spalte">4,77 Mio.</td></tr>
-<tr data-id="niederbayern" style="--farbe:#4ba3c7"><td><span class="farbpunkt"></span>Niederbayern</td><td>Landshut</td><td class="zahl-spalte">10.300 km²</td><td class="zahl-spalte">1,26 Mio.</td></tr>
-<tr data-id="oberpfalz" style="--farbe:#2a9d8f"><td><span class="farbpunkt"></span>Oberpfalz</td><td>Regensburg</td><td class="zahl-spalte">9.700 km²</td><td class="zahl-spalte">1,12 Mio.</td></tr>
-<tr data-id="oberfranken" style="--farbe:#d9604a"><td><span class="farbpunkt"></span>Oberfranken</td><td>Bayreuth</td><td class="zahl-spalte">7.200 km²</td><td class="zahl-spalte">1,05 Mio.</td></tr>
-<tr data-id="mittelfranken" style="--farbe:#e8963f"><td><span class="farbpunkt"></span>Mittelfranken</td><td>Ansbach</td><td class="zahl-spalte">7.200 km²</td><td class="zahl-spalte">1,80 Mio.</td></tr>
-<tr data-id="unterfranken" style="--farbe:#8462b8"><td><span class="farbpunkt"></span>Unterfranken</td><td>Würzburg</td><td class="zahl-spalte">8.500 km²</td><td class="zahl-spalte">1,31 Mio.</td></tr>
-<tr data-id="schwaben" style="--farbe:#4f9a57"><td><span class="farbpunkt"></span>Schwaben</td><td>Augsburg</td><td class="zahl-spalte">10.000 km²</td><td class="zahl-spalte">1,94 Mio.</td></tr>
+<tr data-id="oberbayern" data-name="Oberbayern" data-sitz="München" data-km2="17500" data-mio="4.77" style="--farbe:#3a74c9"><td><span class="farbpunkt"></span>Oberbayern</td><td>München</td><td class="balken-zelle"><span class="mini-balken"><i style="width:100%"></i></span><span class="balken-wert">17.500 km²</span></td><td class="balken-zelle"><span class="mini-balken"><i style="width:100%"></i></span><span class="balken-wert">4,77 Mio.</span></td></tr>
+<tr data-id="niederbayern" data-name="Niederbayern" data-sitz="Landshut" data-km2="10300" data-mio="1.26" style="--farbe:#4ba3c7"><td><span class="farbpunkt"></span>Niederbayern</td><td>Landshut</td><td class="balken-zelle"><span class="mini-balken"><i style="width:59%"></i></span><span class="balken-wert">10.300 km²</span></td><td class="balken-zelle"><span class="mini-balken"><i style="width:26%"></i></span><span class="balken-wert">1,26 Mio.</span></td></tr>
+<tr data-id="oberpfalz" data-name="Oberpfalz" data-sitz="Regensburg" data-km2="9700" data-mio="1.12" style="--farbe:#2a9d8f"><td><span class="farbpunkt"></span>Oberpfalz</td><td>Regensburg</td><td class="balken-zelle"><span class="mini-balken"><i style="width:55%"></i></span><span class="balken-wert">9.700 km²</span></td><td class="balken-zelle"><span class="mini-balken"><i style="width:23%"></i></span><span class="balken-wert">1,12 Mio.</span></td></tr>
+<tr data-id="oberfranken" data-name="Oberfranken" data-sitz="Bayreuth" data-km2="7200" data-mio="1.05" style="--farbe:#d9604a"><td><span class="farbpunkt"></span>Oberfranken</td><td>Bayreuth</td><td class="balken-zelle"><span class="mini-balken"><i style="width:41%"></i></span><span class="balken-wert">7.200 km²</span></td><td class="balken-zelle"><span class="mini-balken"><i style="width:22%"></i></span><span class="balken-wert">1,05 Mio.</span></td></tr>
+<tr data-id="mittelfranken" data-name="Mittelfranken" data-sitz="Ansbach" data-km2="7200" data-mio="1.8" style="--farbe:#e8963f"><td><span class="farbpunkt"></span>Mittelfranken</td><td>Ansbach</td><td class="balken-zelle"><span class="mini-balken"><i style="width:41%"></i></span><span class="balken-wert">7.200 km²</span></td><td class="balken-zelle"><span class="mini-balken"><i style="width:38%"></i></span><span class="balken-wert">1,80 Mio.</span></td></tr>
+<tr data-id="unterfranken" data-name="Unterfranken" data-sitz="Würzburg" data-km2="8500" data-mio="1.31" style="--farbe:#8462b8"><td><span class="farbpunkt"></span>Unterfranken</td><td>Würzburg</td><td class="balken-zelle"><span class="mini-balken"><i style="width:49%"></i></span><span class="balken-wert">8.500 km²</span></td><td class="balken-zelle"><span class="mini-balken"><i style="width:27%"></i></span><span class="balken-wert">1,31 Mio.</span></td></tr>
+<tr data-id="schwaben" data-name="Schwaben" data-sitz="Augsburg" data-km2="10000" data-mio="1.94" style="--farbe:#4f9a57"><td><span class="farbpunkt"></span>Schwaben</td><td>Augsburg</td><td class="balken-zelle"><span class="mini-balken"><i style="width:57%"></i></span><span class="balken-wert">10.000 km²</span></td><td class="balken-zelle"><span class="mini-balken"><i style="width:41%"></i></span><span class="balken-wert">1,94 Mio.</span></td></tr>
         </tbody>
       </table>
     </div>
   </section>
 
-  <!-- 4. Weiter zum Quiz -->
+  <!-- 5. Weiter zum Quiz -->
   <section class="quiz-aufruf" id="quiz-aufruf">
     <div class="schloss-gross" aria-hidden="true"><svg class="schloss" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2.5" fill="currentColor"/><path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></div>
     <h2 id="aufruf-titel">Bereit für das Quiz?</h2>
@@ -154,7 +230,7 @@
 
 <footer>
   Einwohnerzahlen: Bayerisches Landesamt für Statistik, Stand 31.12.2025 (gerundet). Flächenangaben gerundet.<br>
-  Karte: eigene, vereinfachte Darstellung.
+  Karte und Symbole: eigene, vereinfachte Darstellung.
 </footer>
 
 <script>
@@ -172,8 +248,10 @@
    "In den Alpen steht die <strong>Zugspitze</strong> (2.962 m), der höchste Berg Deutschlands.",
    "Der <strong>Chiemsee</strong> ist der größte See Bayerns."
   ],
-  "orden": "Gipfel-Orden",
-  "icon": "berg"
+  "motiv": "Zugspitze",
+  "icon": "berg",
+  "km2": 17500,
+  "mio": 4.77
  },
  "niederbayern": {
   "name": "Niederbayern",
@@ -187,8 +265,10 @@
    "<strong>Passau</strong> ist die „Dreiflüssestadt“: Hier fließen Donau, Inn und Ilz zusammen.",
    "Viel Landwirtschaft, z. B. im fruchtbaren Gäuboden um Straubing."
   ],
-  "orden": "Wald-Orden",
-  "icon": "tanne"
+  "motiv": "Bayerischer Wald",
+  "icon": "tanne",
+  "km2": 10300,
+  "mio": 1.26
  },
  "oberpfalz": {
   "name": "Oberpfalz",
@@ -202,8 +282,10 @@
    "Die Oberpfalz grenzt im Osten an <strong>Tschechien</strong>.",
    "Wegen ihrer vielen Fischweiher wird sie auch „Land der tausend Teiche“ genannt."
   ],
-  "orden": "Brücken-Orden",
-  "icon": "bruecke"
+  "motiv": "Steinerne Brücke",
+  "icon": "bruecke",
+  "km2": 9700,
+  "mio": 1.12
  },
  "oberfranken": {
   "name": "Oberfranken",
@@ -218,8 +300,10 @@
    "Die Altstadt von <strong>Bamberg</strong> ist UNESCO-Welterbe.",
    "Oberfranken hat besonders viele kleine <strong>Brauereien</strong>."
   ],
-  "orden": "Musik-Orden",
-  "icon": "noten"
+  "motiv": "Wagner-Festspiele",
+  "icon": "noten",
+  "km2": 7200,
+  "mio": 1.05
  },
  "mittelfranken": {
   "name": "Mittelfranken",
@@ -233,8 +317,10 @@
    "<strong>Nürnberg</strong> ist aber die größte Stadt und die zweitgrößte Stadt Bayerns (Kaiserburg, Christkindlesmarkt).",
    "Das <strong>Fränkische Seenland</strong> ist ein beliebtes Ausflugsziel."
   ],
-  "orden": "Burg-Orden",
-  "icon": "burg"
+  "motiv": "Kaiserburg",
+  "icon": "burg",
+  "km2": 7200,
+  "mio": 1.8
  },
  "unterfranken": {
   "name": "Unterfranken",
@@ -249,8 +335,10 @@
    "Die <strong>Würzburger Residenz</strong> ist UNESCO-Welterbe.",
    "Mittelgebirge: Spessart und Rhön."
   ],
-  "orden": "Trauben-Orden",
-  "icon": "trauben"
+  "motiv": "Frankenwein",
+  "icon": "trauben",
+  "km2": 8500,
+  "mio": 1.31
  },
  "schwaben": {
   "name": "Schwaben",
@@ -264,35 +352,20 @@
    "In <strong>Augsburg</strong> steht die Fuggerei (1521), die älteste noch bestehende Sozialsiedlung der Welt.",
    "Im <strong>Allgäu</strong> liegt Schloss <strong>Neuschwanstein</strong>."
   ],
-  "orden": "Schloss-Orden",
-  "icon": "schloss"
+  "motiv": "Neuschwanstein",
+  "icon": "schloss",
+  "km2": 10000,
+  "mio": 1.94
  }
 };
   const REIHENFOLGE = ["oberbayern", "niederbayern", "oberpfalz", "oberfranken", "mittelfranken", "unterfranken", "schwaben"];
   const SPEICHER = "bayern-regierungsbezirke-entdeckt";
-  const LESEZEIT = 5; // Sekunden, bevor man den Orden abholen kann
+  const LESEZEIT = 5; // Sekunden, bevor man den Stempel abholen kann
   const SCHLOSS_ZU = `<svg class="schloss" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2.5" fill="currentColor"/><path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>`;
   const SCHLOSS_AUF = `<svg class="schloss" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2.5" fill="currentColor"/><path d="M8 11V8a4 4 0 0 1 7.6-1.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>`;
+  const DREHUNG = { oberbayern: -8, niederbayern: 6, oberpfalz: -3, oberfranken: 9, mittelfranken: -6, unterfranken: 4, schwaben: -10 };
   const wenigBewegung = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  const karte = document.getElementById("bayernkarte");
-  const panel = document.getElementById("infopanel");
-  const entdecker = document.getElementById("entdecker");
-  const leiste = document.getElementById("orden-leiste");
-  let lesetimer = null;
-
-  // Orden im Browser merken, damit sie beim Neuladen nicht verloren gehen
-  function laden() {
-    try {
-      const liste = JSON.parse(localStorage.getItem(SPEICHER) || "[]");
-      return Array.isArray(liste) ? liste.filter(id => BEZIRKE[id]) : [];
-    } catch (e) { return []; }
-  }
-  function speichern() {
-    try { localStorage.setItem(SPEICHER, JSON.stringify([...orden])); } catch (e) {}
-  }
-  const orden = new Set(laden());
-  const alleOrden = () => orden.size === REIHENFOLGE.length;
+  const sanft = wenigBewegung ? "auto" : "smooth";
 
   // Animation neu starten, auch wenn die Klasse schon einmal gesetzt war
   function animiere(el, klasse) {
@@ -302,12 +375,118 @@
     el.classList.add(klasse);
   }
 
-  function ordenSVG(id) {
+  /* ================= 1. Ebenen-Treppe ================= */
+  const EBENEN = [
+    { titel: "Freistaat Bayern", text: "Ganz oben steht das Land Bayern. Die Staatsregierung und die Ministerien haben ihren Sitz in der Landeshauptstadt <strong>München</strong>." },
+    { titel: "7 Regierungsbezirke", text: "Bayern ist in <strong>sieben Regierungsbezirke</strong> aufgeteilt. Jeder hat eine Regierung mit einem festen <strong>Regierungssitz</strong>. Um sie geht es auf dieser Website!" },
+    { titel: "71 Landkreise und 25 kreisfreie Städte", text: "Jeder Regierungsbezirk ist in <strong>Landkreise</strong> und <strong>kreisfreie Städte</strong> unterteilt. Eine kreisfreie Stadt gehört zu keinem Landkreis und erledigt dessen Aufgaben selbst." },
+    { titel: "Über 2.000 Gemeinden", text: "Ein Landkreis besteht aus vielen <strong>Gemeinden</strong> – das sind Städte, Märkte und Dörfer. Hier wohnen die Menschen." },
+  ];
+  const KETTE = ["Bayern", "Oberbayern", "Landkreis Garmisch-Partenkirchen", "Gemeinde Garmisch-Partenkirchen"];
+  let stufe = 0;
+
+  function zeigeStufe(i) {
+    stufe = Math.max(0, Math.min(EBENEN.length - 1, i));
+    document.querySelectorAll(".stufe").forEach((b, n) => {
+      b.classList.toggle("aktiv", n === stufe);
+      b.classList.toggle("darueber", n < stufe);
+      b.setAttribute("aria-selected", String(n === stufe));
+    });
+    document.getElementById("stufen-schritt").textContent = `Stufe ${stufe + 1} von ${EBENEN.length}`;
+    document.getElementById("stufen-titel").textContent = EBENEN[stufe].titel;
+    document.getElementById("stufen-text").innerHTML = EBENEN[stufe].text;
+    document.getElementById("beispiel-kette").innerHTML =
+      '<span class="kette-etikett">Beispiel:</span>' +
+      KETTE.map((k, n) => `<span class="glied ${n === stufe ? "aktiv" : ""} ${n > stufe ? "spaeter" : ""}">${k}</span>`)
+        .join('<span class="kette-pfeil">›</span>');
+    document.getElementById("stufe-zurueck").disabled = stufe === 0;
+    document.getElementById("stufe-weiter").disabled = stufe === EBENEN.length - 1;
+    animiere(document.querySelector(".stufen-info"), "einblenden");
+  }
+  document.querySelectorAll(".stufe").forEach(b => b.addEventListener("click", () => zeigeStufe(Number(b.dataset.i))));
+  document.getElementById("stufe-zurueck").addEventListener("click", () => zeigeStufe(stufe - 1));
+  document.getElementById("stufe-weiter").addEventListener("click", () => zeigeStufe(stufe + 1));
+  zeigeStufe(0);
+
+  /* ================= 2. Klapp-Karten ================= */
+  document.querySelectorAll(".dreh-karte").forEach(k => k.addEventListener("click", () => {
+    const an = k.classList.toggle("gedreht");
+    k.setAttribute("aria-pressed", String(an));
+  }));
+
+  /* ================= 3. Himmelsrichtungen ================= */
+  const RICHTUNGEN = {
+    norden: { titel: "Norden: die drei Franken", winkel: 0, bezirke: ["unterfranken", "oberfranken", "mittelfranken"],
+              text: "Im Norden liegen <strong>Unterfranken</strong>, <strong>Oberfranken</strong> und <strong>Mittelfranken</strong>. Alle drei tragen „Franken“ im Namen." },
+    osten:  { titel: "Osten: Oberpfalz und Niederbayern", winkel: 90, bezirke: ["oberpfalz", "niederbayern"],
+              text: "Im Osten, an der Grenze zu Tschechien und Österreich, liegen die <strong>Oberpfalz</strong> und <strong>Niederbayern</strong>." },
+    sueden: { titel: "Süden: Oberbayern", winkel: 180, bezirke: ["oberbayern"],
+              text: "Im Süden mit den Alpen liegt <strong>Oberbayern</strong> – der größte Regierungsbezirk mit der Landeshauptstadt München." },
+    westen: { titel: "Westen: Schwaben", winkel: 270, bezirke: ["schwaben"],
+              text: "Im Westen, an der Grenze zu Baden-Württemberg, liegt <strong>Schwaben</strong> mit Augsburg und dem Allgäu." },
+  };
+  const mini = document.getElementById("minikarte");
+  const nadel = document.getElementById("kompass-nadel");
+  let nadelWinkel = 0;
+
+  function zeigeRichtung(r) {
+    const d = RICHTUNGEN[r];
+    document.querySelectorAll(".richtung").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.richtung === r)));
+    document.getElementById("donau-knopf").setAttribute("aria-pressed", "false");
+    mini.classList.remove("donau-an");
+    mini.classList.add("hat-auswahl");
+    mini.querySelectorAll("path, text").forEach(p => p.classList.toggle("an", d.bezirke.includes(p.dataset.id)));
+    // Nadel auf kürzestem Weg drehen
+    let ziel = d.winkel;
+    while (ziel - nadelWinkel > 180) ziel -= 360;
+    while (ziel - nadelWinkel < -180) ziel += 360;
+    nadelWinkel = ziel;
+    nadel.style.transform = `rotate(${nadelWinkel}deg)`;
+    document.getElementById("richtung-titel").textContent = d.titel;
+    document.getElementById("richtung-text").innerHTML = d.text;
+    animiere(document.querySelector(".kompass-text"), "einblenden");
+  }
+  document.querySelectorAll(".richtung").forEach(b => b.addEventListener("click", () => zeigeRichtung(b.dataset.richtung)));
+  document.getElementById("donau-knopf").addEventListener("click", e => {
+    document.querySelectorAll(".richtung").forEach(b => b.setAttribute("aria-pressed", "false"));
+    e.currentTarget.setAttribute("aria-pressed", "true");
+    mini.classList.remove("hat-auswahl");
+    mini.querySelectorAll("path, text").forEach(p => p.classList.remove("an"));
+    mini.classList.remove("donau-an"); void mini.getBoundingClientRect(); mini.classList.add("donau-an");
+    document.getElementById("richtung-titel").textContent = "Die Donau";
+    document.getElementById("richtung-text").innerHTML = "Die <strong>Donau</strong> fließt quer durch Bayern: von Schwaben über Regensburg bis nach <strong>Passau</strong>, der „Dreiflüssestadt“ in Niederbayern.";
+    animiere(document.querySelector(".kompass-text"), "einblenden");
+  });
+
+  /* ================= 4. Entdecker-Pass ================= */
+  const karte = document.getElementById("bayernkarte");
+  const panel = document.getElementById("infopanel");
+  const pass = document.getElementById("pass");
+  const leiste = document.getElementById("stempel-leiste");
+  let lesetimer = null;
+
+  // Stempel im Browser merken, damit sie beim Neuladen nicht verloren gehen
+  function laden() {
+    try {
+      const liste = JSON.parse(localStorage.getItem(SPEICHER) || "[]");
+      return Array.isArray(liste) ? liste.filter(id => BEZIRKE[id]) : [];
+    } catch (e) { return []; }
+  }
+  function speichern() {
+    try { localStorage.setItem(SPEICHER, JSON.stringify([...stempel])); } catch (e) {}
+  }
+  const stempel = new Set(laden());
+  const alleStempel = () => stempel.size === REIHENFOLGE.length;
+
+  function stempelSVG(id) {
     const b = BEZIRKE[id];
-    return `<span class="orden ${orden.has(id) ? "an" : ""}" style="--farbe:${b.farbe}">
-      <svg viewBox="0 0 64 64" role="img" aria-label="${b.orden}${orden.has(id) ? "" : " (noch nicht erhalten)"}">
-        <use href="#orden-form"/>
-        <svg class="orden-icon" x="16" y="15" width="32" height="32" viewBox="0 0 24 24"><use href="#icon-${b.icon}"/></svg>
+    const hat = stempel.has(id);
+    return `<span class="stempel ${hat ? "an" : ""}" style="--farbe:${b.farbe}; --drehung:${DREHUNG[id]}deg">
+      <svg viewBox="0 0 64 64" role="img" aria-label="Stempel ${b.name}${hat ? "" : " (fehlt noch)"}">
+        <g ${hat ? 'filter="url(#tinte)"' : ""}>
+          <use href="#stempel-form"/>
+          <svg class="stempel-icon" x="18" y="17" width="28" height="28" viewBox="0 0 24 24"><use href="#icon-${b.icon}"/></svg>
+        </g>
       </svg></span>`;
   }
 
@@ -325,26 +504,27 @@
   function zeigeLeiste(neuId) {
     leiste.innerHTML = REIHENFOLGE.map(id => {
       const b = BEZIRKE[id];
-      return `<button type="button" role="listitem" class="orden-platz ${orden.has(id) ? "verdient" : ""}" data-id="${id}"
-                title="${b.orden} – ${b.name}${orden.has(id) ? "" : ": noch nicht erhalten"}">
-        ${ordenSVG(id)}
-        <span class="orden-titel">${b.orden}</span>
-        <span class="orden-bezirk">${b.name}</span>
+      const hat = stempel.has(id);
+      return `<button type="button" role="listitem" class="stempel-platz ${hat ? "verdient" : ""}" data-id="${id}"
+                title="${b.name}: ${b.motiv}${hat ? "" : " – Stempel fehlt noch"}">
+        ${stempelSVG(id)}
+        <span class="stempel-titel">${b.name}</span>
+        <span class="stempel-motiv">${hat ? b.motiv : "?"}</span>
       </button>`;
     }).join("");
-    leiste.querySelectorAll(".orden-platz").forEach(btn =>
+    leiste.querySelectorAll(".stempel-platz").forEach(btn =>
       btn.addEventListener("click", () => waehle(btn.dataset.id)));
     if (neuId) {
-      const platz = leiste.querySelector(`[data-id="${neuId}"] .orden`);
-      animiere(platz, "verleihen");
-      funkeln(platz);
+      const s = leiste.querySelector(`[data-id="${neuId}"] .stempel`);
+      animiere(s, "stempeln");
+      funkeln(s);
+      setTimeout(() => animiere(pass, "aufprall"), 380);
     }
   }
 
   function aktualisiereFortschritt(neuId) {
-    const n = orden.size;
+    const n = stempel.size;
     const rest = REIHENFOLGE.length - n;
-
     const zahl = document.getElementById("zaehler-zahl");
     zahl.textContent = n;
     if (neuId) animiere(zahl, "huepfen");
@@ -352,39 +532,38 @@
 
     karte.querySelectorAll(".bezirk-name").forEach(t => {
       const id = t.dataset.id;
-      t.textContent = BEZIRKE[id].name + (orden.has(id) ? " ✓" : "");
+      t.textContent = BEZIRKE[id].name + (stempel.has(id) ? " ✓" : "");
     });
 
-    const meldung = document.getElementById("entdecker-meldung");
-    const titel = document.getElementById("entdecker-titel");
+    const meldung = document.getElementById("pass-meldung");
+    const titel = document.getElementById("pass-titel");
     if (n === 0) {
-      titel.textContent = "Deine Orden-Sammlung";
-      meldung.innerHTML = "Klicke einen Bezirk an, lies die Infos und hol dir seinen Orden. Mit allen 7 Orden wird das Quiz freigeschaltet.";
-    } else if (!alleOrden()) {
-      titel.textContent = "Deine Orden-Sammlung";
-      const wer = neuId ? `<strong>${BEZIRKE[neuId].orden}</strong> erhalten! ` : "";
-      meldung.innerHTML = `${wer}Noch <strong>${rest} Orden</strong> bis zum Quiz.`;
+      titel.textContent = "Deine Stempel";
+      meldung.innerHTML = "Klicke einen Bezirk an, lies die Infos und hol dir seinen Stempel. Mit allen 7 Stempeln wird das Quiz freigeschaltet.";
+    } else if (!alleStempel()) {
+      titel.textContent = "Deine Stempel";
+      const wer = neuId ? `Stempel <strong>${BEZIRKE[neuId].name}</strong> erhalten! ` : "";
+      meldung.innerHTML = `${wer}Noch <strong>${rest} Stempel</strong> bis zum Quiz.`;
     } else {
-      titel.textContent = "Alle 7 Orden gesammelt!";
-      meldung.innerHTML = "Super gemacht! Du kennst jetzt alle Regierungsbezirke. Das Quiz ist freigeschaltet.";
+      titel.textContent = "Pass komplett!";
+      meldung.innerHTML = "Super gemacht! Du hast alle 7 Bezirke erkundet. Das Quiz ist freigeschaltet.";
     }
     if (neuId) animiere(meldung, "einblenden");
-    entdecker.classList.toggle("fertig", alleOrden());
+    pass.classList.toggle("fertig", alleStempel());
     document.getElementById("zuruecksetzen").hidden = n === 0;
-
-    aktualisiereQuizKnoepfe(neuId && alleOrden());
+    aktualisiereQuizKnoepfe(neuId && alleStempel());
   }
 
   function aktualisiereQuizKnoepfe(geradeFreigeschaltet) {
-    const frei = alleOrden();
-    const rest = REIHENFOLGE.length - orden.size;
+    const frei = alleStempel();
+    const rest = REIHENFOLGE.length - stempel.size;
     const nav = document.getElementById("nav-quiz");
     const aufruf = document.getElementById("quiz-aufruf");
     const knopf = document.getElementById("aufruf-knopf");
 
     nav.classList.toggle("gesperrt", !frei);
     nav.setAttribute("aria-disabled", String(!frei));
-    nav.innerHTML = frei ? "Zum Quiz" : `${SCHLOSS_ZU} Quiz ${orden.size}/7`;
+    nav.innerHTML = frei ? "Zum Quiz" : `${SCHLOSS_ZU} Quiz ${stempel.size}/7`;
 
     aufruf.classList.toggle("gesperrt", !frei);
     aufruf.querySelector(".schloss-gross").innerHTML = frei ? SCHLOSS_AUF : SCHLOSS_ZU;
@@ -395,8 +574,8 @@
       knopf.innerHTML = "Zum Quiz &rarr;";
     } else {
       document.getElementById("aufruf-titel").textContent = "Das Quiz ist noch gesperrt";
-      document.getElementById("aufruf-text").textContent = "Sammle zuerst alle 7 Orden auf der Karte. Dann kannst du dein Wissen testen.";
-      knopf.innerHTML = `${SCHLOSS_ZU} Noch ${rest} Orden sammeln`;
+      document.getElementById("aufruf-text").textContent = "Sammle zuerst alle 7 Stempel in deinem Entdecker-Pass. Dann kannst du dein Wissen testen.";
+      knopf.innerHTML = `${SCHLOSS_ZU} Noch ${rest} Stempel sammeln`;
     }
     if (geradeFreigeschaltet) {
       animiere(nav, "freigeschaltet");
@@ -405,12 +584,12 @@
     }
   }
 
-  // Gesperrte Quiz-Knöpfe: statt zum Quiz zur Orden-Sammlung springen
+  // Gesperrte Quiz-Knöpfe: statt zum Quiz zum Entdecker-Pass springen
   function gesperrtKlick(e) {
-    if (alleOrden()) return;
+    if (alleStempel()) return;
     e.preventDefault();
-    document.getElementById("karte").scrollIntoView({ behavior: wenigBewegung ? "auto" : "smooth" });
-    setTimeout(() => animiere(entdecker, "wackeln"), 350);
+    document.getElementById("karte").scrollIntoView({ behavior: sanft });
+    setTimeout(() => animiere(pass, "wackeln"), 350);
   }
   document.getElementById("nav-quiz").addEventListener("click", gesperrtKlick);
   document.getElementById("aufruf-knopf").addEventListener("click", gesperrtKlick);
@@ -445,30 +624,38 @@
         <h3>Wähle einen Bezirk</h3>
         <p>Klicke auf der Karte auf einen Regierungsbezirk oder wähle ihn hier aus.</p>
         <div class="bezirk-knoepfe">
-          ${REIHENFOLGE.map(id => `<button data-id="${id}" style="--farbe:${BEZIRKE[id].farbe}" class="${orden.has(id) ? "gesehen" : ""}">${BEZIRKE[id].name}</button>`).join("")}
+          ${REIHENFOLGE.map(id => `<button data-id="${id}" style="--farbe:${BEZIRKE[id].farbe}" class="${stempel.has(id) ? "gesehen" : ""}">${BEZIRKE[id].name}</button>`).join("")}
         </div>
       </div>`;
     panel.querySelectorAll(".bezirk-knoepfe button").forEach(b =>
       b.addEventListener("click", () => waehle(b.dataset.id)));
   }
 
-  function naechsterOhneOrden(id) {
+  function naechsterOhneStempel(id) {
     const start = REIHENFOLGE.indexOf(id);
     for (let i = 1; i < REIHENFOLGE.length; i++) {
       const kandidat = REIHENFOLGE[(start + i) % REIHENFOLGE.length];
-      if (!orden.has(kandidat)) return kandidat;
+      if (!stempel.has(kandidat)) return kandidat;
     }
     return REIHENFOLGE[(start + 1) % REIHENFOLGE.length];
   }
 
-  function ordenBereich(id, geradeErhalten) {
+  // Platz im Vergleich aller Bezirke (gleiche Werte teilen sich den Platz)
+  function platz(id, feld) {
+    const wert = BEZIRKE[id][feld];
+    return 1 + REIHENFOLGE.filter(x => BEZIRKE[x][feld] > wert).length;
+  }
+  const MAX_KM2 = Math.max(...REIHENFOLGE.map(id => BEZIRKE[id].km2));
+  const MAX_MIO = Math.max(...REIHENFOLGE.map(id => BEZIRKE[id].mio));
+
+  function stempelBereich(id, geradeErhalten) {
     const b = BEZIRKE[id];
-    if (orden.has(id)) {
-      return `<div class="orden-bereich erhalten">${ordenSVG(id)}
-        <p>${geradeErhalten ? "Glückwunsch! " : ""}Du hast den <strong>${b.orden}</strong> erhalten.</p></div>`;
+    if (stempel.has(id)) {
+      return `<div class="stempel-bereich erhalten">${stempelSVG(id)}
+        <p>${geradeErhalten ? "Klasse! " : ""}Der Stempel <strong>${b.name}</strong> ist in deinem Entdecker-Pass.</p></div>`;
     }
-    return `<div class="orden-bereich">${ordenSVG(id)}
-      <div><p>Lies dir alles durch – dann bekommst du den <strong>${b.orden}</strong>.</p>
+    return `<div class="stempel-bereich">${stempelSVG(id)}
+      <div><p>Lies dir alles durch – dann bekommst du den Stempel für <strong>${b.name}</strong>.</p>
       <button class="abholen" id="abholen" disabled style="--lesezeit:${LESEZEIT}s">
         <span id="abholen-text">Erst lesen …</span></button></div></div>`;
   }
@@ -485,21 +672,32 @@
     karte.insertBefore(aktiv, karte.querySelector(".donau"));
     if (!geradeErhalten) animiere(aktiv, "aufleuchten");
 
-    const naechster = naechsterOhneOrden(id);
+    const naechster = naechsterOhneStempel(id);
     panel.style.setProperty("--farbe", b.farbe);
     panel.innerHTML = `
       <div class="panel-kopf">
-        <h3>${b.name}</h3>
-        <p>Regierungssitz: <strong>${b.sitz}</strong></p>
+        <div class="panel-kopf-symbol"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-${b.icon}"/></svg></div>
+        <div>
+          <h3>${b.name}</h3>
+          <p>Regierungssitz: <strong>${b.sitz}</strong> · Größte Stadt: <strong>${b.stadt}</strong></p>
+        </div>
       </div>
       <div class="panel-inhalt">
-        <div class="panel-zahlen">
-          <div><strong>${b.flaeche.replace("ca. ", "")}</strong><span>Fläche (ca.)</span></div>
-          <div><strong>${b.einwohner.replace("ca. ", "")}</strong><span>Einwohner (ca.)</span></div>
-          <div><strong>${b.stadt}</strong><span>Größte Stadt</span></div>
+        <div class="vergleich">
+          <div class="vergleich-zeile">
+            <span class="vergleich-name">Fläche</span>
+            <span class="vergleich-balken"><i style="--anteil:${(b.km2 / MAX_KM2 * 100).toFixed(0)}%"></i></span>
+            <span class="vergleich-wert">${b.flaeche.replace("ca. ", "")}<small>Platz ${platz(id, "km2")} von 7</small></span>
+          </div>
+          <div class="vergleich-zeile">
+            <span class="vergleich-name">Einwohner</span>
+            <span class="vergleich-balken"><i style="--anteil:${(b.mio / MAX_MIO * 100).toFixed(0)}%"></i></span>
+            <span class="vergleich-wert">${b.einwohner.replace("ca. ", "")}<small>Platz ${platz(id, "mio")} von 7</small></span>
+          </div>
         </div>
-        <ul>${b.fakten.map(f => `<li>${f}</li>`).join("")}</ul>
-        ${ordenBereich(id, geradeErhalten)}
+        <h4 class="wusstest-du">Wusstest du?</h4>
+        <ol class="fakten">${b.fakten.map(f => `<li>${f}</li>`).join("")}</ol>
+        ${stempelBereich(id, geradeErhalten)}
         <div class="panel-aktionen">
           <button class="knopf-klein" id="alle">&larr; Alle Bezirke</button>
           <button class="knopf-klein" id="weiter">${BEZIRKE[naechster].name} &rarr;</button>
@@ -514,20 +712,20 @@
       lesetimer = setTimeout(() => {
         abholen.disabled = false;
         abholen.classList.add("bereit");
-        document.getElementById("abholen-text").textContent = "Orden abholen!";
+        document.getElementById("abholen-text").textContent = "Stempel abholen!";
       }, LESEZEIT * 1000);
-      abholen.addEventListener("click", () => verleihe(id));
+      abholen.addEventListener("click", () => vergebeStempel(id));
     }
     if (geradeErhalten) {
-      const o = panel.querySelector(".orden-bereich .orden");
-      animiere(o, "verleihen");
-      funkeln(o);
+      const s = panel.querySelector(".stempel-bereich .stempel");
+      animiere(s, "stempeln");
+      funkeln(s);
     }
   }
 
-  function verleihe(id) {
-    if (orden.has(id)) return;
-    orden.add(id);
+  function vergebeStempel(id) {
+    if (stempel.has(id)) return;
+    stempel.add(id);
     speichern();
     waehle(id, true);
     aktualisiereFortschritt(id);
@@ -537,24 +735,45 @@
     p.addEventListener("click", () => {
       waehle(p.dataset.id);
       // auf dem Handy liegt die Info unter der Karte: dorthin scrollen
-      if (window.innerWidth < 880) panel.scrollIntoView({ behavior: wenigBewegung ? "auto" : "smooth", block: "start" });
+      if (window.innerWidth < 880) panel.scrollIntoView({ behavior: sanft, block: "start" });
     });
     p.addEventListener("keydown", e => {
       if (e.key === "Enter" || e.key === " ") { e.preventDefault(); waehle(p.dataset.id); }
     });
   });
 
-  document.querySelectorAll("tbody tr").forEach(tr => tr.addEventListener("click", () => {
-    waehle(tr.dataset.id);
-    document.getElementById("karte").scrollIntoView({ behavior: wenigBewegung ? "auto" : "smooth" });
-  }));
-
   document.getElementById("zuruecksetzen").addEventListener("click", () => {
-    orden.clear();
+    stempel.clear();
     speichern();
     zeigeStart();
     aktualisiereFortschritt(null);
   });
+
+  /* ================= 5. Sortierbare Tabelle ================= */
+  const tbody = document.querySelector("#vergleich tbody");
+  let sortierung = { schluessel: null, absteigend: false };
+  document.querySelectorAll(".sortieren").forEach(knopf => knopf.addEventListener("click", () => {
+    const s = knopf.dataset.schluessel;
+    const zahl = knopf.dataset.zahl === "1";
+    // Zahlen zuerst absteigend (größter oben), Text zuerst A–Z
+    sortierung = { schluessel: s, absteigend: sortierung.schluessel === s ? !sortierung.absteigend : zahl };
+    const zeilen = [...tbody.rows].sort((a, b) => {
+      const x = zahl ? Number(a.dataset[s]) : a.dataset[s];
+      const y = zahl ? Number(b.dataset[s]) : b.dataset[s];
+      const v = zahl ? x - y : x.localeCompare(y, "de");
+      return sortierung.absteigend ? -v : v;
+    });
+    zeilen.forEach(z => tbody.appendChild(z));
+    document.querySelectorAll(".sortieren").forEach(k => {
+      k.closest("th").setAttribute("aria-sort", k === knopf ? (sortierung.absteigend ? "descending" : "ascending") : "none");
+      k.querySelector(".pfeil").textContent = k === knopf ? (sortierung.absteigend ? "▼" : "▲") : "";
+    });
+    zeilen.forEach((z, i) => { z.style.animationDelay = (i * 40) + "ms"; animiere(z, "einblenden"); });
+  }));
+  tbody.querySelectorAll("tr").forEach(tr => tr.addEventListener("click", () => {
+    waehle(tr.dataset.id);
+    document.getElementById("karte").scrollIntoView({ behavior: sanft });
+  }));
 
   zeigeStart();
   aktualisiereFortschritt(null);
