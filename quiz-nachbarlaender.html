@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quiz: Deutschlands Nachbarländer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="kopf-europa">
+  <span class="vorzeile">Lernwebsite Erdkunde</span>
+  <h1>Quiz: Deutschlands Nachbarländer</h1>
+  <p>10 Fragen zu allem, was du auf der Karte entdeckt hast. Wähle jeweils eine Antwort.</p>
+</header>
+
+<nav>
+  <a href="nachbarlaender.html">&larr; Zurück zu den Infos</a>
+  <a href="nachbarlaender.html#karte">Zur Karte</a>
+</nav>
+
+<main>
+  <section>
+    <div class="quiz box" id="quiz-box"></div>
+  </section>
+</main>
+
+<footer>
+  Lernwebsite zu den Nachbarländern Deutschlands
+</footer>
+
+<script>
+  const fragen = [
+    { frage: "Wie viele Nachbarländer hat Deutschland?",
+      antworten: ["7", "8", "9", "10"], richtig: 2,
+      erklaerung: "Deutschland hat neun Nachbarländer." },
+    { frage: "Welches Nachbarland liegt im Norden?",
+      antworten: ["Dänemark", "Polen", "Niederlande", "Schweiz"], richtig: 0,
+      erklaerung: "Im Norden grenzt nur Dänemark an Deutschland." },
+    { frage: "Was ist die Hauptstadt von Tschechien?",
+      antworten: ["Prag", "Warschau", "Wien", "Bern"], richtig: 0,
+      erklaerung: "Die Hauptstadt von Tschechien ist Prag." },
+    { frage: "Welches ist das kleinste Nachbarland Deutschlands?",
+      antworten: ["Belgien", "Luxemburg", "Schweiz", "Dänemark"], richtig: 1,
+      erklaerung: "Luxemburg ist mit etwa 2.600 km² das kleinste Nachbarland." },
+    { frage: "Welches Nachbarland ist NICHT in der Europäischen Union?",
+      antworten: ["Österreich", "Polen", "Schweiz", "Dänemark"], richtig: 2,
+      erklaerung: "Die Schweiz ist das einzige Nachbarland, das nicht in der EU ist." },
+    { frage: "Mit welchem Land hat Deutschland die kürzeste Grenze?",
+      antworten: ["Luxemburg", "Dänemark", "Belgien", "Schweiz"], richtig: 1,
+      erklaerung: "Die Grenze zu Dänemark ist nur 68 km lang." },
+    { frage: "In welchem Land steht der Eiffelturm?",
+      antworten: ["Belgien", "Frankreich", "Luxemburg", "Schweiz"], richtig: 1,
+      erklaerung: "Der Eiffelturm steht in Paris, der Hauptstadt von Frankreich." },
+    { frage: "Welcher Fluss bildet einen großen Teil der Grenze zu Polen?",
+      antworten: ["Rhein", "Donau", "Oder", "Elbe"], richtig: 2,
+      erklaerung: "Die Oder (und die Neiße) bilden einen großen Teil der Grenze zu Polen." },
+    { frage: "In welchem Nachbarland zahlt man NICHT mit dem Euro?",
+      antworten: ["Österreich", "Niederlande", "Dänemark", "Belgien"], richtig: 2,
+      erklaerung: "In Dänemark zahlt man mit der Dänischen Krone." },
+    { frage: "In welchem Nachbarland ist Deutsch eine Amtssprache?",
+      antworten: ["Polen", "Österreich", "Niederlande", "Frankreich"], richtig: 1,
+      erklaerung: "In Österreich spricht man Deutsch – genauso wie in der Schweiz, in Luxemburg und in Teilen Belgiens." },
+  ];
+
+  /* Vier Stufen für die Auswertung */
+  const STUFEN = [
+    { ab: 100, klasse: "stufe-profi", titel: "Europa-Profi!",
+      text: "Alle Fragen richtig! Du kennst Deutschlands Nachbarländer wie deine Westentasche.",
+      bild: `<svg viewBox="0 0 160 160" aria-hidden="true">
+        <circle cx="80" cy="80" r="74" fill="#fff4d6"/>
+        <g class="strahlen" fill="#ffd25e" opacity=".55">
+          <path d="M80 6 86 40H74z"/><path d="M80 154 74 120h12z"/><path d="M6 80 40 74v12z"/><path d="M154 80 120 86V74z"/>
+          <path d="M28 28 52 52l-8 8z"/><path d="M132 132 108 108l8-8z"/><path d="M132 28 116 60l-8-8z"/><path d="M28 132 44 100l8 8z"/>
+        </g>
+        <path d="M50 46h60v14c0 22-13 38-30 38S50 82 50 60z" fill="#f2b51b"/>
+        <path d="M50 52H36c0 16 8 26 18 28" fill="none" stroke="#f2b51b" stroke-width="7" stroke-linecap="round"/>
+        <path d="M110 52h14c0 16-8 26-18 28" fill="none" stroke="#f2b51b" stroke-width="7" stroke-linecap="round"/>
+        <path d="M58 50h12v12c0 10 4 20 10 26-12-2-22-14-22-30z" fill="#fff" opacity=".35"/>
+        <rect x="72" y="96" width="16" height="14" fill="#e0a312"/>
+        <rect x="58" y="110" width="44" height="12" rx="3" fill="#c98b0b"/>
+        <rect x="52" y="122" width="56" height="10" rx="3" fill="#a87106"/>
+        <path d="M80 56l4.4 9 9.9 1.4-7.2 7 1.7 9.8L80 78.6l-8.8 4.6 1.7-9.8-7.2-7 9.9-1.4z" fill="#fff"/>
+        <g class="funkeln" fill="#ffb800">
+          <path d="M30 40l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"/><path d="M128 36l1.6 4.4 4.4 1.6-4.4 1.6-1.6 4.4-1.6-4.4-4.4-1.6 4.4-1.6z"/>
+          <path d="M132 104l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"/>
+        </g></svg>` },
+    { ab: 80, klasse: "stufe-super", titel: "Super gemacht!",
+      text: "Fast alles richtig – du bist schon richtig gut! Schau dir unten an, was noch nicht ganz geklappt hat.",
+      bild: `<svg viewBox="0 0 160 160" aria-hidden="true">
+        <circle cx="80" cy="80" r="74" fill="#e4effb"/>
+        <path d="M58 100 46 146l14-8 10 12 8-44z" fill="#1f6fb8"/><path d="M102 100l12 46-14-8-10 12-8-44z" fill="#12355b"/>
+        <path class="stern" d="M80 22l14.7 29.8 32.9 4.8-23.8 23.2 5.6 32.7L80 97l-29.4 15.5 5.6-32.7-23.8-23.2 32.9-4.8z" fill="#3a8be0"/>
+        <path d="M80 36l9.8 19.9 21.9 3.2-15.8 15.5 3.7 21.8L80 86.1 60.4 96.4l3.7-21.8-15.8-15.5 21.9-3.2z" fill="#fff" opacity=".25"/>
+        <g class="funkeln" fill="#3a8be0">
+          <path d="M28 46l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"/><path d="M134 54l1.6 4.4 4.4 1.6-4.4 1.6-1.6 4.4-1.6-4.4-4.4-1.6 4.4-1.6z"/>
+        </g></svg>` },
+    { ab: 50, klasse: "stufe-gut", titel: "Gut gemacht!",
+      text: "Mehr als die Hälfte geschafft – du bist fast am Gipfel! Mit einem zweiten Blick auf die Karte klappt es noch besser.",
+      bild: `<svg viewBox="0 0 160 160" aria-hidden="true">
+        <circle cx="80" cy="80" r="74" fill="#e6f4ea"/>
+        <path d="M14 128 62 52l22 32 16-22 46 66z" fill="#4f9a57"/>
+        <path d="M62 52l10 16-6-2-6 6-6-4z" fill="#fff"/>
+        <path d="M30 124c14-6 22-14 30-24s20-14 30-22" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="5 5" stroke-linecap="round"/>
+        <line x1="90" y1="78" x2="90" y2="46" stroke="#12355b" stroke-width="3" stroke-linecap="round"/>
+        <path class="fahne" d="M91 47h22l-6 7 6 7H91z" fill="#d9604a"/>
+        <circle cx="90" cy="80" r="5" fill="#12355b"/>
+      </svg>` },
+    { ab: 0, klasse: "stufe-ueben", titel: "Weiter üben!",
+      text: "Das war erst der Anfang. Erkunde die Nachbarländer auf der Karte noch einmal in Ruhe – dann klappt es beim nächsten Versuch bestimmt besser!",
+      bild: `<svg viewBox="0 0 160 160" aria-hidden="true">
+        <circle cx="80" cy="80" r="74" fill="#fdeee2"/>
+        <circle cx="80" cy="80" r="46" fill="#fff" stroke="#e8963f" stroke-width="7"/>
+        <g fill="#e8963f" font-family="Georgia, serif" font-weight="700" font-size="13" text-anchor="middle">
+          <text x="80" y="47">N</text><text x="80" y="122">S</text><text x="117" y="85">O</text><text x="43" y="85">W</text>
+        </g>
+        <g class="nadel">
+          <polygon points="80,52 87,80 80,76 73,80" fill="#d9604a"/>
+          <polygon points="80,108 87,80 80,84 73,80" fill="#12355b"/>
+        </g>
+        <circle cx="80" cy="80" r="4.5" fill="#fff" stroke="#12355b" stroke-width="2"/>
+      </svg>` },
+  ];
+
+  const box = document.getElementById("quiz-box");
+  const BUCHSTABEN = ["A", "B", "C", "D"];
+  const wenigBewegung = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let reihenfolge = [];
+  let index = 0;
+  let punkte = 0;
+  let protokoll = [];
+
+  function mischen(liste) {
+    const kopie = liste.slice();
+    for (let i = kopie.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [kopie[i], kopie[j]] = [kopie[j], kopie[i]];
+    }
+    return kopie;
+  }
+
+  function starten() {
+    reihenfolge = mischen(fragen);
+    index = 0;
+    punkte = 0;
+    protokoll = [];
+    zeigeFrage();
+  }
+
+  function punkteLeiste() {
+    return `<div class="frage-punkte">${reihenfolge.map((_, i) => {
+      const p = protokoll[i];
+      const k = p ? (p.richtig ? "richtig" : "falsch") : (i === index ? "aktuell" : "");
+      return `<i class="${k}"></i>`;
+    }).join("")}</div>`;
+  }
+
+  function zeigeFrage() {
+    const f = reihenfolge[index];
+    box.innerHTML = `
+      <div class="frage-kopf">
+        <p class="frage-nr">Frage ${index + 1} von ${reihenfolge.length}</p>
+        ${punkteLeiste()}
+      </div>
+      <p class="frage einblenden">${f.frage}</p>
+      <div class="antworten">
+        ${f.antworten.map((a, i) => `<button data-i="${i}"><span class="buchstabe">${BUCHSTABEN[i]}</span>${a}</button>`).join("")}
+      </div>
+      <div class="rueckmeldung" id="rueckmeldung" aria-live="polite"></div>
+    `;
+    box.querySelectorAll(".antworten button").forEach(btn => {
+      btn.addEventListener("click", () => antworten(Number(btn.dataset.i)));
+    });
+  }
+
+  function antworten(gewaehlt) {
+    const f = reihenfolge[index];
+    const knoepfe = box.querySelectorAll(".antworten button");
+    knoepfe.forEach(b => b.disabled = true);
+    knoepfe[f.richtig].classList.add("richtig");
+    const richtig = gewaehlt === f.richtig;
+    protokoll[index] = { frage: f, gewaehlt, richtig };
+    box.querySelector(".frage-punkte").outerHTML = punkteLeiste();
+
+    const rm = document.getElementById("rueckmeldung");
+    if (richtig) {
+      punkte++;
+      rm.className = "rueckmeldung richtig";
+      rm.innerHTML = "<strong>Richtig!</strong> " + f.erklaerung;
+    } else {
+      knoepfe[gewaehlt].classList.add("falsch");
+      rm.className = "rueckmeldung falsch";
+      rm.innerHTML = "<strong>Leider falsch.</strong> " + f.erklaerung;
+    }
+
+    const weiter = document.createElement("button");
+    weiter.className = "knopf";
+    weiter.textContent = index < reihenfolge.length - 1 ? "Nächste Frage →" : "Zur Auswertung →";
+    weiter.addEventListener("click", () => {
+      index++;
+      if (index < reihenfolge.length) zeigeFrage(); else zeigeErgebnis();
+    });
+    box.appendChild(weiter);
+    weiter.focus({ preventScroll: true });
+  }
+
+  function zeigeErgebnis() {
+    const gesamt = reihenfolge.length;
+    const prozent = Math.round(punkte / gesamt * 100);
+    const stufe = STUFEN.find(s => prozent >= s.ab);
+    const umfang = 2 * Math.PI * 52;
+
+    box.innerHTML = `
+      <div class="ergebnis ${stufe.klasse}">
+        <div class="ergebnis-oben">
+          <div class="ergebnis-bild">${stufe.bild}</div>
+          <div class="ring">
+            <svg viewBox="0 0 120 120" aria-hidden="true">
+              <circle cx="60" cy="60" r="52" class="ring-spur"/>
+              <circle cx="60" cy="60" r="52" class="ring-wert" stroke-dasharray="${umfang}" stroke-dashoffset="${umfang}"/>
+            </svg>
+            <div class="ring-text"><strong id="ring-zahl">0</strong><span>von ${gesamt}</span></div>
+          </div>
+        </div>
+        <p class="ergebnis-stufe">${prozent} % richtig</p>
+        <h2>${stufe.titel}</h2>
+        <p class="ergebnis-text">${stufe.text}</p>
+        <div class="stufen-skala" aria-label="Bewertungsstufen">
+          ${STUFEN.slice().reverse().map(s => `<span class="${s === stufe ? "an" : ""} ${s.klasse}">${s.ab === 100 ? "100 %" : s.ab === 0 ? "unter 50 %" : `ab ${s.ab} %`}</span>`).join("")}
+        </div>
+        <div class="ergebnis-knoepfe">
+          <button class="knopf" id="neustart">Quiz nochmal spielen</button>
+          <a class="knopf knopf-hell" href="nachbarlaender.html#karte">Zurück zur Karte</a>
+        </div>
+        <details class="auswertung" ${prozent < 100 ? "open" : ""}>
+          <summary>Deine Antworten ansehen</summary>
+          <ol>
+            ${protokoll.map(p => `
+              <li class="${p.richtig ? "richtig" : "falsch"}">
+                <span class="symbol">${p.richtig ? "✓" : "✗"}</span>
+                <div>
+                  <strong>${p.frage.frage}</strong>
+                  ${p.richtig
+                    ? `<span>Deine Antwort: ${p.frage.antworten[p.gewaehlt]}</span>`
+                    : `<span>Deine Antwort: ${p.frage.antworten[p.gewaehlt]} · Richtig: <b>${p.frage.antworten[p.frage.richtig]}</b></span>`}
+                </div>
+              </li>`).join("")}
+          </ol>
+        </details>
+      </div>
+    `;
+    document.getElementById("neustart").addEventListener("click", starten);
+
+    // Ring füllen und Zahl hochzählen
+    const ring = box.querySelector(".ring-wert");
+    const zahl = document.getElementById("ring-zahl");
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      ring.style.strokeDashoffset = umfang * (1 - punkte / gesamt);
+    }));
+    if (wenigBewegung) { zahl.textContent = punkte; }
+    else {
+      let n = 0;
+      const t = setInterval(() => {
+        if (n >= punkte) { clearInterval(t); return; }
+        n++; zahl.textContent = n;
+      }, 1200 / Math.max(punkte, 1));
+    }
+    if (prozent === 100) setTimeout(konfetti, 400);
+  }
+
+  function konfetti() {
+    if (wenigBewegung) return;
+    const farben = ["#3a74c9", "#4ba3c7", "#2a9d8f", "#d9604a", "#e8963f", "#8462b8", "#4f9a57", "#f2b51b"];
+    const huelle = document.createElement("div");
+    huelle.className = "konfetti";
+    for (let i = 0; i < 110; i++) {
+      const s = document.createElement("span");
+      s.style.left = Math.random() * 100 + "vw";
+      s.style.background = farben[i % farben.length];
+      s.style.animationDuration = 1.8 + Math.random() * 1.8 + "s";
+      s.style.animationDelay = Math.random() * 0.6 + "s";
+      s.style.setProperty("--drift", (Math.random() * 160 - 80) + "px");
+      s.style.width = 6 + Math.random() * 6 + "px";
+      s.style.height = 8 + Math.random() * 8 + "px";
+      huelle.appendChild(s);
+    }
+    document.body.appendChild(huelle);
+    setTimeout(() => huelle.remove(), 4500);
+  }
+
+  // Das Quiz ist erst freigeschaltet, wenn auf der Infoseite alle 9 Stempel gesammelt wurden.
+  // Kann der Browser nichts speichern, bleibt das Quiz offen, damit niemand ausgesperrt wird.
+  function gesammelteStempel() {
+    try {
+      const liste = JSON.parse(localStorage.getItem("nachbarlaender-entdeckt") || "[]");
+      return Array.isArray(liste) ? new Set(liste).size : 0;
+    } catch (e) { return 9; }
+  }
+
+  function zeigeGesperrt(anzahl) {
+    const rest = 9 - anzahl;
+    box.innerHTML = `
+      <div class="quiz-gesperrt">
+        <div class="schloss-gross"><svg class="schloss" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2.5" fill="currentColor"/><path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></div>
+        <h2>Das Quiz ist noch gesperrt</h2>
+        <p>In deinem Entdecker-Pass sind erst <strong>${anzahl} von 9</strong> Stempeln.
+           Sammle zuerst alle Stempel auf der Karte – es fehlen noch ${rest}!</p>
+        <a class="knopf" href="nachbarlaender.html#karte">Stempel sammeln &rarr;</a>
+      </div>`;
+  }
+
+  const anzahl = gesammelteStempel();
+  if (anzahl >= 9) starten(); else zeigeGesperrt(anzahl);
+</script>
+</body>
+</html>

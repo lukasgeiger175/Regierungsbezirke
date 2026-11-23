@@ -594,6 +594,68 @@ tbody tr.einblenden { animation-fill-mode: backwards; }
 .stufe-ueben .nadel { transform-origin: 80px 80px; animation: suchen 2.6s ease-in-out infinite; }
 @keyframes suchen { 0%, 100% { transform: rotate(-25deg); } 50% { transform: rotate(35deg); } }
 
+/* ---------- Nachbarländer-Seite ---------- */
+header.kopf-europa {
+  background-color: #1b2f6b;
+  background-image:
+    linear-gradient(135deg, rgba(42,157,143,.45), rgba(27,47,107,0)),
+    radial-gradient(circle at 50% 50%, rgba(255,215,80,.16) 0 2px, transparent 3px),
+    repeating-linear-gradient(60deg, rgba(255,255,255,.06) 0 1px, transparent 1px 28px),
+    repeating-linear-gradient(-60deg, rgba(255,255,255,.06) 0 1px, transparent 1px 28px);
+  background-size: auto, 34px 34px, auto, auto;
+}
+.meer { fill: #d8ecf9; }
+.andere { fill: #e6e6de; stroke: #fff; stroke-width: 1; }
+.land-de { fill: #3d5168; stroke: #fff; stroke-width: 1.2; }
+.land-de-name {
+  font-family: var(--titel); font-size: 17px; font-weight: 700; fill: #fff; text-anchor: middle;
+  letter-spacing: .02em; pointer-events: none;
+}
+.meer-name { font-size: 12px; font-style: italic; fill: #4a86b5; text-anchor: middle; pointer-events: none; letter-spacing: .08em; }
+.hinweislinie { stroke: #3d5168; stroke-width: 1.2; pointer-events: none; }
+.stadt-punkt.haupt-de { fill: #f2b51b; stroke: #fff; }
+.stadt-name.stadt-de { fill: #fff; stroke: rgba(0,0,0,.35); }
+.karte-europa svg { border-radius: 12px; }
+#europakarte .bezirk-name { font-size: 12.5px; }
+
+.minikarte .meer { fill: #e9f4fb; }
+.minikarte path.andere { fill: #ececE6; stroke: #fff; }
+.minikarte path.land-de { fill: #3d5168; }
+.minikarte.hat-auswahl path.fest, .minikarte.donau-an path.fest { opacity: 1; filter: none; animation: none; }
+.minikarte-europa text { font-size: 17px; }
+.stufen-karte { max-width: 300px; margin: 0 0 14px; }
+.stufen-karte .minikarte { max-width: 100%; border-radius: 12px; }
+
+.stempel-leiste.neun { grid-template-columns: repeat(9, 1fr); }
+@media (max-width: 760px) { .stempel-leiste.neun { grid-template-columns: repeat(5, 1fr); } }
+@media (max-width: 480px) { .stempel-leiste.neun { grid-template-columns: repeat(3, 1fr); } }
+
+.steckbrief { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-bottom: 16px; }
+.steckbrief .breit { grid-column: 1 / -1; }
+.steckbrief div { background: var(--hintergrund); border-radius: 10px; padding: 8px 10px; min-width: 0; }
+.steckbrief span { display: block; font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--grau); }
+.steckbrief strong { display: block; color: var(--navy); font-size: .95rem; line-height: 1.25; }
+.vergleich-zeile { grid-template-columns: 96px 1fr 104px; }
+
+/* Wechsel zum anderen Thema */
+.themen-wechsel {
+  display: flex; align-items: center; gap: 16px; margin-top: 28px; padding: 20px 24px;
+  border-radius: var(--radius); text-decoration: none; color: var(--text);
+  background: #fff; border: 2px solid var(--rand); box-shadow: var(--schatten);
+  transition: border-color .2s, transform .2s;
+}
+.themen-wechsel:hover { border-color: var(--blau); transform: translateY(-2px); }
+.themen-symbol {
+  flex: none; width: 56px; height: 56px; border-radius: 16px; display: grid; place-items: center;
+  background: linear-gradient(135deg, #2a9d8f, #1b2f6b);
+}
+.themen-symbol svg { width: 30px; height: 30px; fill: #fff; }
+.themen-text { flex: 1; }
+.themen-text small { display: block; font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--blau); }
+.themen-text strong { display: block; font-family: var(--titel); font-size: clamp(1.15rem, 3vw, 1.45rem); color: var(--navy); }
+.themen-pfeil { font-size: 1.6rem; color: var(--blau); transition: transform .2s; }
+.themen-wechsel:hover .themen-pfeil { transform: translateX(4px); }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
 }
