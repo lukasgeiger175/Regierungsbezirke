@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quiz: Bayerns Regierungsbezirke</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>Quiz: Bayerns Regierungsbezirke</h1>
+  <p>10 Fragen zu den Informationen auf der Infoseite. Wähle jeweils eine Antwort.</p>
+</header>
+
+<nav>
+  <a href="index.html">&larr; Zurück zu den Infos</a>
+</nav>
+
+<main>
+  <section>
+    <div class="quiz box" id="quiz-box"></div>
+  </section>
+</main>
+
+<footer>
+  Lernwebsite zu den Regierungsbezirken Bayerns
+</footer>
+
+<script>
+  const fragen = [
+    {
+      frage: "Wie viele Regierungsbezirke hat Bayern?",
+      antworten: ["5", "7", "9", "10"],
+      richtig: 1,
+      erklaerung: "Bayern hat sieben Regierungsbezirke."
+    },
+    {
+      frage: "Welche Stadt ist der Regierungssitz von Mittelfranken?",
+      antworten: ["Nürnberg", "Erlangen", "Ansbach", "Fürth"],
+      richtig: 2,
+      erklaerung: "Der Regierungssitz ist Ansbach – auch wenn Nürnberg die größte Stadt ist."
+    },
+    {
+      frage: "Welcher Regierungsbezirk ist der größte (nach Fläche und Einwohnern)?",
+      antworten: ["Schwaben", "Niederbayern", "Mittelfranken", "Oberbayern"],
+      richtig: 3,
+      erklaerung: "Oberbayern ist mit ca. 17.500 km² und rund 4,77 Mio. Einwohnern der größte Bezirk."
+    },
+    {
+      frage: "Regensburg ist der Regierungssitz von …",
+      antworten: ["Niederbayern", "Oberpfalz", "Oberfranken", "Oberbayern"],
+      richtig: 1,
+      erklaerung: "Regensburg ist der Sitz der Regierung der Oberpfalz."
+    },
+    {
+      frage: "Welcher Regierungsbezirk ist für den Frankenwein im „Bocksbeutel“ bekannt?",
+      antworten: ["Unterfranken", "Oberfranken", "Schwaben", "Oberpfalz"],
+      richtig: 0,
+      erklaerung: "Der Frankenwein wächst vor allem am Main in Unterfranken."
+    },
+    {
+      frage: "In welchem Regierungsbezirk liegt Schloss Neuschwanstein?",
+      antworten: ["Oberbayern", "Niederbayern", "Schwaben", "Mittelfranken"],
+      richtig: 2,
+      erklaerung: "Neuschwanstein liegt im Allgäu – und das gehört zu Schwaben."
+    },
+    {
+      frage: "Welche Stadt ist der Regierungssitz von Oberfranken?",
+      antworten: ["Bamberg", "Bayreuth", "Coburg", "Hof"],
+      richtig: 1,
+      erklaerung: "Regierungssitz ist Bayreuth, die Stadt der Richard-Wagner-Festspiele."
+    },
+    {
+      frage: "In welchem Regierungsbezirk liegt der erste Nationalpark Deutschlands?",
+      antworten: ["Oberbayern", "Oberpfalz", "Unterfranken", "Niederbayern"],
+      richtig: 3,
+      erklaerung: "Der Nationalpark Bayerischer Wald (1970) liegt in Niederbayern."
+    },
+    {
+      frage: "Welche Stadt ist der Regierungssitz von Niederbayern?",
+      antworten: ["Passau", "Straubing", "Landshut", "Deggendorf"],
+      richtig: 2,
+      erklaerung: "Der Regierungssitz von Niederbayern ist Landshut."
+    },
+    {
+      frage: "Wie viele Regierungsbezirke tragen „Franken“ im Namen?",
+      antworten: ["2", "3", "4", "1"],
+      richtig: 1,
+      erklaerung: "Drei: Unterfranken, Oberfranken und Mittelfranken."
+    }
+  ];
+
+  const box = document.getElementById("quiz-box");
+  let reihenfolge = [];
+  let index = 0;
+  let punkte = 0;
+
+  function mischen(liste) {
+    const kopie = liste.slice();
+    for (let i = kopie.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [kopie[i], kopie[j]] = [kopie[j], kopie[i]];
+    }
+    return kopie;
+  }
+
+  function starten() {
+    reihenfolge = mischen(fragen);
+    index = 0;
+    punkte = 0;
+    zeigeFrage();
+  }
+
+  function zeigeFrage() {
+    const f = reihenfolge[index];
+    const prozent = (index / reihenfolge.length) * 100;
+    box.innerHTML = `
+      <div class="fortschritt"><div style="width:${prozent}%"></div></div>
+      <p class="frage-nr">Frage ${index + 1} von ${reihenfolge.length}</p>
+      <p class="frage">${f.frage}</p>
+      <div class="antworten">
+        ${f.antworten.map((a, i) => `<button data-i="${i}">${a}</button>`).join("")}
+      </div>
+      <div class="rueckmeldung" id="rueckmeldung"></div>
+    `;
+    box.querySelectorAll(".antworten button").forEach(btn => {
+      btn.addEventListener("click", () => antworten(Number(btn.dataset.i)));
+    });
+  }
+
+  function antworten(gewaehlt) {
+    const f = reihenfolge[index];
+    const knoepfe = box.querySelectorAll(".antworten button");
+    knoepfe.forEach(b => b.disabled = true);
+    knoepfe[f.richtig].classList.add("richtig");
+
+    const rm = document.getElementById("rueckmeldung");
+    if (gewaehlt === f.richtig) {
+      punkte++;
+      rm.className = "rueckmeldung richtig";
+      rm.innerHTML = "<strong>Richtig!</strong> " + f.erklaerung;
+    } else {
+      knoepfe[gewaehlt].classList.add("falsch");
+      rm.className = "rueckmeldung falsch";
+      rm.innerHTML = "<strong>Leider falsch.</strong> " + f.erklaerung;
+    }
+
+    const weiter = document.createElement("button");
+    weiter.className = "knopf";
+    weiter.textContent = index < reihenfolge.length - 1 ? "Nächste Frage" : "Ergebnis anzeigen";
+    weiter.addEventListener("click", () => {
+      index++;
+      if (index < reihenfolge.length) zeigeFrage(); else zeigeErgebnis();
+    });
+    box.appendChild(weiter);
+  }
+
+  function zeigeErgebnis() {
+    let text;
+    if (punkte === reihenfolge.length) text = "Perfekt! Du kennst Bayerns Regierungsbezirke ganz genau.";
+    else if (punkte >= 7) text = "Sehr gut! Schau dir die Infos zu den Fragen, die du nicht wusstest, noch einmal an.";
+    else if (punkte >= 4) text = "Gar nicht schlecht! Lies die Infos noch einmal und versuch es erneut.";
+    else text = "Das war erst der Anfang. Lies die Infos in Ruhe durch und starte dann das Quiz neu.";
+
+    box.innerHTML = `
+      <div class="fortschritt"><div style="width:100%"></div></div>
+      <div class="ergebnis">
+        <p>Dein Ergebnis</p>
+        <p class="punkte-gross">${punkte} / ${reihenfolge.length}</p>
+        <p>${text}</p>
+        <button class="knopf" id="neustart">Quiz neu starten</button>
+        <p><a href="index.html">&larr; Zurück zu den Infos</a></p>
+      </div>
+    `;
+    document.getElementById("neustart").addEventListener("click", starten);
+  }
+
+  starten();
+</script>
+</body>
+</html>
