@@ -2,8 +2,8 @@
 
 Eine einfache Lernwebsite für ein Uni-Seminar. Sie besteht aus zwei Seiten:
 
-1. **Infoseite** (`index.html`): Grundlagen und eine interaktive Karte – ein Klick auf einen Regierungsbezirk zeigt Regierungssitz, Fläche, Einwohner und wichtige Fakten
-2. **Quizseite** (`quiz.html`): 10 Multiple-Choice-Fragen, die die Informationen abfragen
+1. **Infoseite** (`index.html`): Grundlagen und eine interaktive Karte – ein Klick auf einen Regierungsbezirk zeigt Regierungssitz, Fläche, Einwohner und wichtige Fakten. Nach dem Lesen gibt es für jeden Bezirk einen Orden.
+2. **Quizseite** (`quiz.html`): 10 Multiple-Choice-Fragen, die die Informationen abfragen. Das Quiz wird erst freigeschaltet, wenn alle 7 Orden gesammelt sind.
 
 ## Dateien
 

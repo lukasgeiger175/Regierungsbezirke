@@ -181,7 +181,29 @@
     document.getElementById("neustart").addEventListener("click", starten);
   }
 
-  starten();
+  // Das Quiz ist erst freigeschaltet, wenn auf der Infoseite alle 7 Orden gesammelt wurden.
+  // Kann der Browser nichts speichern, bleibt das Quiz offen, damit niemand ausgesperrt wird.
+  function entdeckteBezirke() {
+    try {
+      const liste = JSON.parse(localStorage.getItem("bayern-regierungsbezirke-entdeckt") || "[]");
+      return Array.isArray(liste) ? new Set(liste).size : 0;
+    } catch (e) { return 7; }
+  }
+
+  function zeigeGesperrt(anzahl) {
+    const rest = 7 - anzahl;
+    box.innerHTML = `
+      <div class="quiz-gesperrt">
+        <div class="schloss-gross"><svg class="schloss" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2.5" fill="currentColor"/><path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></div>
+        <h2>Das Quiz ist noch gesperrt</h2>
+        <p>Du hast erst <strong>${anzahl} von 7</strong> Orden gesammelt.
+           Hol dir zuerst alle Orden auf der Karte – es fehlen noch ${rest}!</p>
+        <a class="knopf" href="index.html#karte">Orden sammeln &rarr;</a>
+      </div>`;
+  }
+
+  const anzahl = entdeckteBezirke();
+  if (anzahl >= 7) starten(); else zeigeGesperrt(anzahl);
 </script>
 </body>
 </html>
